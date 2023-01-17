@@ -7,11 +7,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ETEC POÁ</title>
     <link rel="stylesheet" href="../CSS/index.css">
+    <link href="../CSS/css-bootstrap/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="shortcut icon" href="../../imagens/logotipo-etec.png" type="image/x-icon">
 </head>
-<frameset rows="13%, *, 6%" noresize border="0">
-    <frame src="menu.html" scrolling="no"></frame>
-    <frame src="principal.html" name="principal"></frame>
-    <frame src="rodape.html" scrolling="no"></frame>
-</frameset>
+    <body>
+        <div id="menu">
+            <nav id="barra_nav" class="barra_nav">
+                <div class="container">
+                    <a href="../../imagens/logotipo-etec.png" target="_blank">
+                        <img src="../../imagens/logotipo-etec.png" alt="logotipo etec">
+                    </a>
+        
+                    <div id="menu" class="menu">
+                        <div id="noUserMenu">
+                            <ul class="lista_menu">
+                                <li class="item_menu">
+                                    <a onclick="loadPag('principal', 'index.html');" class="sem_linha">Principal</a>
+                                </li>
+                                <li class="item_menu">
+                                    <a onclick="loadPag('principal', 'vagasRemanescentes.html');" class="sem_linha">Vagas Remanescentes</a>
+                                </li>
+                                <li class="item_menu">
+                                    <a class="sem_linha" onclick="loadPag('principal', 'robo.html');">Robô</a>
+                                </li>
+                            </ul>
+                        </div>
+        
+                        <div id="userMenu" hidden>
+                            <ul class="lista_menu">
+                                <li class="item_menu">
+                                    <a onclick="loadPag('principal', 'index.html');" class="sem_linha">Principal</a>
+                                </li>
+                                <li class="item_menu">
+                                    <a class="sem_linha" onclick="loadPag('principal', 'robo.html');">Robô</a>
+                                </li>
+                                <li class="item_menu">
+                                    <a onclick="loadPag('principal', 'forum.html');" class="sem_linha">Fórum</a>
+                                </li>
+                                <li class="item_menu">
+                                    <a onclick="loadPag('principal', 'oportunidades.html');" class="sem_linha">Oportunidades</a>
+                                </li>
+                                <li class="item_menu">
+                                    <a onclick="loadPag('principal', 'denuncias.html');" class="sem_linha">Denúncia/Sugestões</a>
+                                </li>
+                                <li class="item_menu">
+                                    <a onclick="loadPag('principal', 'declaracoes.html');" class="sem_linha" id="urlDeclaracoes">Declarações</a>
+                                </li>
+                                <div id="logOut" hidden>
+                                    <li class="item_menu">
+                                        <a href="index.html?usuario=" target="_self" class="sem_linha">Sair</a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div>
+                        <div id="acesso_simple" class="acesso_simple" title="Acessar o SIMPLE">
+                            <a class="btn_acesso" onclick="abreMenuLogin();">
+                                SIMPLE <img src="../../imagens/user.png" alt="Ícone de usuário" class="icon">
+                            </a>
+                        </div>
+                        <div id="ref_empresa" class="ref_empresa">
+                            <span>Realização: </span>
+                            <img src="../../imagens/logo.png" alt="Logo da System For You" class="logo">
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="principal" class="" style=" padding: 100px 0px 0px 0px;">
+
+        </div>
+        <footer class="bg-light text-center text-lg-start">
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-image: linear-gradient(180deg,rgb(255, 255, 255),#65cf1f);">
+                Todos os direitos reservados &#169; 2023 System.FY | 
+                <a href="#" target="_blank" class="sem_linha text-dark">Política de Privacidade</a> |
+                <a href="#" target="_blank" class="sem_linha text-dark">Termos de Uso</a>
+                <a href="../../imagens/logotipo-cps.png" target="_blank" class="sem_linha text-dark">
+                    <img src="../../imagens/logotipo-cps.png" alt="logotipo etec">
+                </a>
+                <a href="../../imagens/logo-governo.png" target="_blank" class="sem_linha text-dark">
+                    <img src="../../imagens/logo-governo.png" alt="logotipo etec">
+                </a>
+            </div>
+            <!-- Copyright -->
+          </footer>
+    </body>
+    <script src="../JS/index.js"></script>
+    <script src="../JS/js-bootstrap/bootstrap.bundle.min.js"></script>
 </html>

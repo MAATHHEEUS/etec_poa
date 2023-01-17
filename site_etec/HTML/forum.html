@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Fórum</title>
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link href="../CSS/css-bootstrap/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div id="div_resposta" class="modal">
+        <div class="container">
+            <div class="caixa_inf modal-content">
+                <!-- Botão de Fechar [x] -->
+                <span class="close">&times;</span>
+                
+                <div class="conteudo">
+                    <div class="caixa_cursos">
+                        <div class="">
+                            <label for="pergunta">Pergunta:</label>
+                        </div>
+
+                        <div id="pergunta">
+                            <textarea id="descricao_pergunta" class="" maxlength="300" cols="30" rows="10" readonly disabled style="resize: none;"></textarea>
+                            <input type="hidden" id="id_pergunta">
+                        </div>
+
+                        <div class="">
+                            <label for="resposta">Sua resposta:</label>
+                            <textarea id="descricao_resposta" class="" maxlength="300" cols="30" rows="10" placeholder="máximo 300 caracteres" style="resize: none;"></textarea>
+                        </div>
+
+                        <div class="">
+                            <label for="autor">Autor:</label>
+                            <input type="text" name="autor_resposta" id="autor_resposta" maxlength="60">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <input type="button" value="POSTAR" id="btn_responder" class="">
+                    </div>
+
+                    <p id="msg_resposta"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="div_pergunta" class="modal">
+        <div class="container">
+            <div class="caixa_inf modal-content">
+                <!-- Botão de Fechar [x] -->
+                <span class="close">&times;</span>
+                
+                <div class="conteudo">
+                    <div class="caixa_cursos">
+                        <div">
+                            <h4>Sua Pergunta/Idéia</h4>
+                        </div>
+
+                        <div class="">
+                            <label for="descricao">Descrição:</label>
+                            <textarea id="descricao" class="" maxlength="300" cols="30" rows="10" placeholder="máximo 300 caracteres" style="resize: none;"></textarea>
+                        </div>
+
+                        <div class="">
+                            <label for="autor">Autor:</label>
+                            <input type="text" name="autor" id="autor" maxlength="60">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <input type="button" value="POSTAR" id="btn_postar" class="">
+                    </div>
+
+                    <p id="msg_pergunta"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="caixa1">
+        <div class="container">
+            <div class="caixa_inf">
+                <div class="titulo">
+                    <h1>FÓRUM</h1>
+                </div>
+                
+                <div class="conteudo">
+                    <br>
+                    <p>Aqui você pesquisar ou postar suas dúvidas, projetos e idéias sobre a vida acadêmica.</p>
+                    <div class="">
+                        <label for="conteudo">Pesquisa:</label>
+                        <input type="text" name="conteudo" id="conteudo" maxlength="30" placeholder="Digite aqui sua dúvida">
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="button" value="PESQUISAR" id="btn_enviar" class="" onclick="Buscar();">
+                    </div>
+
+                    <div class="mb-3" hidden id="btn_ask">
+                        <input type="button" value="CRIAR UMA PERGUNTA" id="btn_abrirPergunta" class="">
+                    </div>
+
+                    <p id="msg"></p>
+                    <div class="caixa_cursos" id="interacoes">
+                        <h2>Autor - 07/01/23</h2>
+                        <div class="noticia">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos iure, molestiae deleniti doloribus facere voluptates vel earum omnis rerum, quas blanditiis numquam mollitia voluptatum temporibus placeat fuga asperiores velit?</p>
+                            <br>
+                            <h4>Respostas:</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi esse quod ullam, tenetur itaque reprehenderit, possimus alias laboriosam quas voluptatum corporis accusamus quibusdam, in consectetur necessitatibus explicabo voluptatem perspiciatis hic! <strong>Autor - data</strong></p>
+                        </div>
+                        <div class="mb-3">
+                            <input type="button" value="RESPONDER" onclick="responder(id_pergunta);" class="">
+                        </div>
+                        <br>
+                        <h2>Notícia 2</h2>
+                        <div class="noticia">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos iure, molestiae deleniti doloribus facere voluptates vel earum omnis rerum, quas blanditiis numquam mollitia voluptatum temporibus placeat fuga asperiores velit?</p>
+                        </div>
+                        <div class="mb-3">
+                            <input type="button" value="RESPONDER" onclick="responder(id_pergunta);" class="">
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../JS/forum.js"></script>
+    <script src="../JS/js-bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+</html>

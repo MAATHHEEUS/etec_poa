@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vagas</title>
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link href="../CSS/css-bootstrap/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="caixa1" class="modal">
+        <div class="container">
+            <div class="caixa_inf modal-content">
+                <!-- Botão de Fechar [x] -->
+                <span class="close">&times;</span>
+                
+                <div class="conteudo">
+                    <div class="caixa_cursos">
+                        <div id="nome_curso">
+                            <h4>Curso: "CURSO X"</h4>
+                        </div>
+
+                        <div id="resumo">
+                            <p><strong>Resumo: </strong> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad unde itaque tempora ab fugit. Minima omnis dignissimos voluptas inventore laudantium earum consequatur veniam iusto necessitatibus doloribus quo, ratione aut! Vel?</p>
+                        </div>
+
+                        <div id="requisitos">
+                            <p><strong>Requisito: </strong> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore corporis necessitatibus eveniet, deserunt illo reprehenderit eos deleniti fugit earum eum, illum obcaecati, cupiditate quam quo quaerat accusamus rem qui vero!</p>
+                        </div>
+
+                        <div class="">
+                            <label for="periodo">Período:</label>
+                            <input type="text" name="periodo" id="periodo" readonly disabled>
+                        </div>
+
+                        <div class="">
+                            <label for="diassemana">Dias da Semana:</label>
+                            <input type="text" name="diassemana" id="diassemana" readonly disabled>
+                        </div>
+
+                        <div class="">
+                            <label for="tipo">Tipo:</label>
+                            <input type="text" name="tipo" id="tipo" readonly disabled>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="button" value="INSCREVER" id="btn_inscrever" class="" onclick="abrirInscricao();">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <BR></BR>
+    <div id="caixa2">
+        <div class="container">
+            <div class="caixa_inf">
+                <div class="titulo">
+                    <h1>VAGAS REMANESCENTES</h1>
+                </div>
+                <br>
+                
+                <div class="conteudo">
+                    Caso você tenha interesse em uma das vagas abaixo, clique em inscrever-se para preencher seus dados e fazer parte da ETEC-Poá.
+                    
+                    <div class="caixa_cursos">
+                        <div id="grid"></div>
+                    </div>
+                </div>
+
+                <p id="msg"></p>
+            </div>
+        </div>
+    </div>
+    <script src="../JS/vagasRemanescentes.js"></script>
+</body>
+</html>
