@@ -10,12 +10,13 @@ if($conect == false){
     return;
 }
 
-$acao = $_POST['acao'];
+$acao = mysqli_real_escape_string($conn, $_POST['acao']);
+
 # Executa a ação solicitada pelo sistema    
 switch ($acao) {
     case "checaLogin":
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $senha = mysqli_real_escape_string($conn, $_POST['senha']);
 
         $qry = "SELECT * FROM tb_usuarios WHERE email = '$email'";
         $resultset = mysqli_query($conn, $qry);
@@ -80,13 +81,14 @@ switch ($acao) {
             'tipo' => 'OK',
             'msg' => "",
             'usuarioId' => $row['usuario_id'],
+            'tipo_usr' => $row['tipo'] 
         ));
         return;            
         break;
 
     case "cadSenha":
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $senha = mysqli_real_escape_string($conn, $_POST['senha']);
 
         $qry = "SELECT * FROM tb_usuarios WHERE email = '$email'";
         $resultset = mysqli_query($conn, $qry);

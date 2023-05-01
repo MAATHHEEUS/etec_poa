@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Crud de Usuário</title>
+</head>
+<body>
+    <div id="caixa1">
+        <div class="container-fluid">
+            <div class="caixa_inf">
+                <div class="titulo">
+                    <h1>USUÁRIOS</h1>
+                </div>
+                
+                <div class="conteudo">
+                    <input type="button" class="btn btn-info m-1 mt-3 p-1" value="CADASTRAR" id="btn_abrir_cadastro">
+                    
+                    <div class="caixa_cursos" id="noticias">
+                        <div id="grid" class="table-responsive"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="div_cadastro" class="modal modal-lg">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Botão de Fechar [x] -->
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastro de Usuários</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="caixa_cursos">
+                        <input type="hidden" id="usuario_id">
+
+                        <div class="m-2">
+                            <label class="form-label m-1" for="email">Email:</label>
+                            <input class="form-control form-control-sm m-1" type="email" id="email">
+                        </div>
+
+                        <div class="m-2">
+                            <label class="form-label m-1" for="senha">Senha:</label>
+                            <input class="form-control form-control-sm m-1" type="password" id="senha" readonly disabled value="0000">
+                        </div>
+
+                        <div class="m-2">
+                            <label class="form-label m-1" for="tipo">Tipo:</label>
+                            <select class="form-select form-select-sm m-1" id="tipo">
+                                <option value="aluno">Aluno</option>
+                                <option value="prof">Professor</option>
+                                <option value="admin">Administrador</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <input type="button" value="SALVAR" id="btn_salvar" class="btn btn-primary m-1 p-1">
+                    </div>
+
+                    <p id="msg_cadastro" class="lead text-danger"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../site_etec/JS/usuario_crud.js"></script>
+</body>
+</html>

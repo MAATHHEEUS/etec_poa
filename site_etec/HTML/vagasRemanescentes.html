@@ -6,17 +6,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vagas</title>
-    <link rel="stylesheet" href="../CSS/index.css">
-    <link href="../CSS/css-bootstrap/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div id="caixa1" class="modal">
-        <div class="container">
-            <div class="caixa_inf modal-content">
+    <div id="caixa1" class="modal modal-lg">
+        <div class="modal-dialog">
+            <div class="modal-content">
                 <!-- Botão de Fechar [x] -->
-                <span class="close">&times;</span>
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Informações sobre a vaga</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
                 
-                <div class="conteudo">
+                <div class="modal-body">
                     <div class="caixa_cursos">
                         <div id="nome_curso">
                             <h4>Curso: "CURSO X"</h4>
@@ -30,32 +31,32 @@
                             <p><strong>Requisito: </strong> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore corporis necessitatibus eveniet, deserunt illo reprehenderit eos deleniti fugit earum eum, illum obcaecati, cupiditate quam quo quaerat accusamus rem qui vero!</p>
                         </div>
 
-                        <div class="">
-                            <label for="periodo">Período:</label>
-                            <input type="text" name="periodo" id="periodo" readonly disabled>
+                        <div class="m-2">
+                            <label class="form-label m-1" for="periodo">Período</label>
+                            <input type="text" class="form-control form-control-sm m-1" name="periodo" id="periodo" readonly disabled>
                         </div>
 
-                        <div class="">
-                            <label for="diassemana">Dias da Semana:</label>
-                            <input type="text" name="diassemana" id="diassemana" readonly disabled>
+                        <div class="m-2">
+                            <label class="form-label m-1" for="diassemana">Dias da Semana:</label>
+                            <input type="text" class="form-control form-control-sm m-1" name="diassemana" id="diassemana" readonly disabled>
                         </div>
 
-                        <div class="">
-                            <label for="tipo">Tipo:</label>
-                            <input type="text" name="tipo" id="tipo" readonly disabled>
+                        <div class="m-2">
+                            <label class="form-label m-1" for="tipo">Tipo:</label>
+                            <input type="text" class="form-control form-control-sm m-1" name="tipo" id="tipo" readonly disabled>
                         </div>
                     </div>
 
-                    <div class="mb-3">
-                        <input type="button" value="INSCREVER" id="btn_inscrever" class="" onclick="abrirInscricao();">
+                    <div class="d-grid gap-2">
+                        <input type="button" class="btn btn-danger m-1 p-1" value="INSCREVE-SE" id="btn_inscrever" onclick="abrirInscricao();">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <BR></BR>
+
     <div id="caixa2">
-        <div class="container">
+        <div class="container-fluid">
             <div class="caixa_inf">
                 <div class="titulo">
                     <h1>VAGAS REMANESCENTES</h1>
@@ -66,14 +67,14 @@
                     Caso você tenha interesse em uma das vagas abaixo, clique em inscrever-se para preencher seus dados e fazer parte da ETEC-Poá.
                     
                     <div class="caixa_cursos">
-                        <div id="grid"></div>
+                        <div id="grid" class="table-responsive"></div>
                     </div>
                 </div>
 
-                <p id="msg"></p>
+                <p id="msg" class="lead text-danger"></p>
             </div>
         </div>
     </div>
-    <script src="../JS/vagasRemanescentes.js"></script>
+    <script src="../site_etec/JS/vagasRemanescentes.js"></script>
 </body>
 </html>

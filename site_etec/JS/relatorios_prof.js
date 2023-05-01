@@ -1,10 +1,13 @@
-// Carregar as últimas notícias
+usuarioId = getParameter('usuario');
+
+// Carregar as matérias do professor(usuarioId)
 $(document).ready(
     function() {
         let dados = new FormData()
-        dados.append('acao', 'carregaNoticias')
+        dados.append('acao', 'carregaMaterias')
+        dados.append('prof', getParameter('usuario'))
         $.ajax({
-        url: '../site_etec/PHP/principal.php',
+        url: '../site_etec/PHP/relatorios_prof.php',
         method: 'post',
         data: dados,
         processData: false,
@@ -16,15 +19,14 @@ $(document).ready(
             }
             $('#msg').text(resposta.msg)
             if(resposta.tipo === 'OK'){
-                $('#noticias').html(resposta.noticias)
+                $('#materias').html(resposta.materias)
             }
         } )
         return
     }
 );
 
-var usuarioId = getParameter('usuario')
-
-if(usuarioId > 0){
-    $('#caixa2').hide();
+function print(dec){
+    open("../site_etec/PHP/fpdf." + dec + ".php?usuario=" + usuarioId+"&materia="+document.getElementById("materias").value, "_blank")
+    return
 }

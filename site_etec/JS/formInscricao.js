@@ -2,7 +2,7 @@
 var modal = document.getElementById("caixa1");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("btn-close")[0];
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
@@ -10,12 +10,8 @@ span.onclick = function() {
   return;
 }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-    return;
-  }
+function fecharPoliticas() {
+  modal.style.display = "none";
   return;
 }
 
@@ -27,15 +23,16 @@ function abrirDiv(){
 
 $('#btn_cpf').click(
     function () {
-        if($('#cpf').val() === '' || Number($('#cpf').val()) === NaN){
+        if($('#cpf').val() === '' || !$.isNumeric($('#cpf').val())){
             alert('CPF deve ser numérico')
             return
         }
         let dados = new FormData()
         dados.append('acao', 'checaCPF')
         dados.append('cpf', $('#cpf').val())
+        dados.append('id_curso', id_curso)
         $.ajax({
-        url: '../PHP/formInscricao.php',
+        url: '../site_etec/PHP/formInscricao.php',
         method: 'post',
         data: dados,
         processData: false,
@@ -45,7 +42,7 @@ $('#btn_cpf').click(
             if(resposta.tipo === 'E'){
                 alert(resposta.msg)
             }
-            $('#msg').text(resposta.msg)
+            $('#msg_form').text(resposta.msg)
             if(resposta.tipo === 'OK'){
                 document.getElementById('caixa2').removeAttribute("hidden")
                 document.getElementById('caixa3').setAttribute("hidden", "")
@@ -59,11 +56,14 @@ $('#btn_cpf').click(
                 $('#dt_nasc').val(resposta.dt_nasc)
                 $('#cpf_resp').val(resposta.cpf_resp)
                 $('#nome_resp').val(resposta.nome_resp)
+                $('#periodo').val(resposta.periodo)
+                $('#diassemana').val(resposta.diassemana)
             }
         } )
         return
     }
 )
+
 $('#btn_enviar').click(
     function () {
         var politicas = document.getElementById("politicas");
@@ -106,7 +106,7 @@ $('#btn_enviar').click(
         dados.append('diassemana', $('#diassemana').val())
         dados.append('id_curso', id_curso)
         $.ajax({
-        url: '../PHP/formInscricao.php',
+        url: '../site_etec/PHP/formInscricao.php',
         method: 'post',
         data: dados,
         processData: false,
@@ -116,10 +116,10 @@ $('#btn_enviar').click(
             if(resposta.tipo === 'E'){
                 alert(resposta.msg)
             }
-            $('#msg').text(resposta.msg)
+            $('#msg_form').text(resposta.msg)
             if(resposta.tipo === 'OK'){
                 alert(resposta.msg)
-                loadPag('principal', 'principal.html')
+                loadPag('principal', '../site_etec/HTML/principal.html')
             }
         } )
         return
@@ -129,9 +129,9 @@ $('#btn_enviar').click(
 var nome_curso = getParameter('curso')
 var id_curso = getParameter('id_curso')
 
-$('#nome_curso').html('<h4>Curso: '+nome_curso+'</h4>')
+$('#nome_curso').html('<h4>Vaga Remanescente para o curso: '+nome_curso+'</h4>')
 
 if(nome_curso === 'EMT'){
     $('#diassemana').html('<option value="1">Seg. a Sex.</option>')
-    $('#periodo').html('<option value="4">Integral</option>')
+    $('#periodo').html('<option value="Integral">Integral</option>')
 }

@@ -14,13 +14,13 @@ if($conect == false){
 
 # Pega o usuario pela url para usar na consulta
 $id_usuario = mysqli_real_escape_string($conn, $_GET['usuario']);
+$materia = mysqli_real_escape_string($conn, $_GET['materia']);
 
 # Faz a consulta dos dados para alimentar o PDF
 $qry = "select tb1.id_inscricao as num_inscricao, tb1.nome, tb1.cpf, tb1.mae, tb1.rg, tb1.uf, dt_nasc, tb1.nome_resp, tb1.cpf_resp, tb1.email,
 tb2.nome as curso, tb2.resumo, tb2.tipo, tb2.periodo, tb2.diassemana
 from tb_inscricoes tb1 join tb_cursos tb2 on tb2.id_curso = tb1.id_curso
-join tb_usuarios tb3 on tb3.email = tb1.email
-where tb3.usuario_id = " . $id_usuario;
+where tb2.id_curso =" . $materia ." order by tb1.nome";
 
 $resultset = mysqli_query($conn, $qry);
 
@@ -33,14 +33,22 @@ if (!$resultset){
 # Verifica se retornou linhas
 $qntd = mysqli_num_rows($resultset);
 if ($qntd <= 0) {
-    echo "ERRO USUÁRIO NÃO ENCONTRADO!";
+    echo "ERRO CURSO NÃO CONTÉM ALUNOS INSCRITOS!";
     return;
 }
 
-$row = mysqli_fetch_assoc($resultset);
-
 #Monta o PDF
 class PDF extends FPDF{
+    private $titulo;
+
+    //Gets e Sets
+    function setTitulo($titulo){
+        $this->titulo = $titulo;
+    }
+
+    function getTitulo(){
+        return $this->titulo;
+    }
     // Page header
     function Header() {
         $today = getdate();
@@ -52,13 +60,21 @@ class PDF extends FPDF{
         // Move to the right
         $this->Cell(80);
         // Title
-        $this->Cell(30,10,utf8_decode('Declaração de Matrícula'),0,0,'C');
+        $this->Cell(30,10,utf8_decode($this->getTitulo()),0,0,'C');
         $this->Cell(55);
         // Data Atual
         $this->SetFont('Arial','',8);
         $this->Cell(30,10,utf8_decode('Emitido em: '.$dtAtual),0,0,'C');
         // Line break
         $this->Ln(20);
+        //Cabeçalho
+        $this->SetFont('Arial','B',8);
+        $this->Cell(10,3,utf8_decode('Matrícula'),0,0,'R');
+        $this->Cell(60,3,utf8_decode('Aluno'),0,0,'L');
+        $this->Cell(80,3,utf8_decode('Email(@etec.sp.gov.br)'),0,0,'L');
+        $this->Cell(30,3,utf8_decode('Data Nasc.'),0,0,'L');
+        //Line break
+        $this->Ln(5);
     }
 
     // Page footer
@@ -74,10 +90,30 @@ class PDF extends FPDF{
         $this->Image('../../imagens/logotipo-cps.png',100,150,30);
     }
 }
+
+# Faz a consulta para buscar o nome do curso
+$qry = "select nome
+from tb_cursos
+where id_curso =" . $materia;
+
+$res = mysqli_query($conn, $qry);
+
+$row = mysqli_fetch_assoc($res);
+
+$curso = $row['nome'];
+
 $pdf = new PDF();
+$pdf->setTitulo("Relação de Alunos ".$curso);
 $pdf->AddPage();
 $pdf->AliasNbPages();
 $pdf->SetFont('Times','',12);
-$pdf->MultiCell(190,10,utf8_decode("Declaramos que o Aluno: " . $row['nome'] . ", portador do CPF de nº: " . $row['cpf'] . ", está inscrito na Instituição ETEC-Poá sob a inscrição de nº: " . $row['num_inscricao'] . ", no presente curso '" . $row['curso'] . "' no período: " . $row['periodo'] . " de " . $row['diassemana']),0,1);
-$pdf->Output('I', 'dec_matricula.pdf');
+
+while($row = mysqli_fetch_assoc($resultset)){
+    $pdf->Cell(10,3,utf8_decode($row['num_inscricao']),0,0,'R');
+    $pdf->Cell(60,3,utf8_decode(substr($row['nome'], 0, 60)),0,0,'L');
+    $pdf->Cell(80,3,utf8_decode(str_replace("@etec.sp.gov.br","",$row['email'])),0,0,'L');
+    $pdf->Cell(30,3,utf8_decode(converteData('padrao', $row['dt_nasc'])),0,1,'L');
+}
+
+$pdf->Output('I', 'rel_alunos.pdf');
 ?>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Principal</title>
+</head>
+<body>
+    <div id="caixa1">
+        <div class="container-fluid">
+            <div class="caixa_inf">
+                <div class="titulo">
+                    <h1>Matérias</h1>
+                </div>
+                
+                <div class="conteudo">
+                    <div class="caixa_cursos" id="materias">
+                        Carregando as matérias ...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="div_chamada" class="modal modal-lg">
+        <div class="modal-dialog">
+            <div class="caixa_inf modal-content">
+                <!-- Botão de Fechar [x] -->
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Chamada</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="caixa_cursos">
+                        <div id="titulo">
+                            <h4>Chamada do dia: xx/xx/xx</h4>
+                        </div>
+
+                        <div class="table-responsive" id="lista">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <input type="button" value="CONFIRMAR" id="btn_confirmar" class="btn btn-primary m-1 p-1" onclick="fechaChamada();">
+                    </div>
+
+                    <p id="msg_chamada" class="lead text-danger"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../site_etec/JS/materias.js"></script>
+</body>
+</html>

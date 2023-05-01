@@ -2,7 +2,7 @@
 var modal = document.getElementById("caixa1");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("btn-close")[0];
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
@@ -24,7 +24,7 @@ var curso
 var id_curso
 
 function abrirInscricao() {
-    loadPag('principal', 'formInscricao.html?curso='+curso+'&id_curso='+id_curso)
+    loadPag('principal', '../site_etec/HTML/formInscricao.html?curso='+curso+'&id_curso='+id_curso)
 }
 
 // Show div
@@ -33,7 +33,7 @@ function abrirDiv(id){
     dados.append('acao', 'dadosCurso')
     dados.append('id_curso', id)
     $.ajax({
-    url: '../PHP/vagasRemanescentes.php',
+    url: '../site_etec/PHP/vagasRemanescentes.php',
     method: 'post',
     data: dados,
     processData: false,
@@ -65,7 +65,7 @@ $(document).ready(
         let dados = new FormData()
         dados.append('acao', 'carregaVagas')
         $.ajax({
-        url: '../PHP/vagasRemanescentes.php',
+        url: '../site_etec/PHP/vagasRemanescentes.php',
         method: 'post',
         data: dados,
         processData: false,

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Crud de Curso</title>
+</head>
+<body>
+    <div id="caixa1">
+        <div class="container-fluid">
+            <div class="caixa_inf">
+                <div class="titulo">
+                    <h1>CURSOS</h1>
+                </div>
+                
+                <div class="conteudo">
+                    <br>
+                    <input type="button" class="btn btn-info m-1 p-1" value="CADASTRAR" id="btn_abrir_cadastro">
+
+                    <div class="caixa_cursos" id="noticias">
+                        <div id="grid" class="table-responsive"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="div_cadastro" class="modal modal modal-lg">
+        <div class="modal-dialog">
+            <div class="caixa_inf modal-content">
+                <!-- Botão de Fechar [x] -->
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastro de curso</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="caixa_cursos">
+                        <input type="hidden" id="curso_id">
+
+                        <div class="m-2">
+                            <label class="form-label m-1" for="Professor">Professor</label>
+                            <select class="form-select form-select-sm m-1" id="prof_id"></select>
+                        </div>
+
+                        <div class="m-2">
+                            <label class="form-label m-1" for="nome">Nome</label>
+                            <input class="form-control form-control-sm m-1" type="text" id="nome">
+                        </div>
+
+                        <div class="m-2">
+                            <label class="form-label m-1" for="resumo">Resumo</label>
+                            <textarea class="form-control form-control-sm m-1" id="resumo"></textarea> 
+                        </div>
+
+                        <div class="m-2">
+                            <label class="form-label m-1" for="requisitos">Requisitos</label>
+                            <textarea class="form-control form-control-sm m-1" id="requisitos"></textarea> 
+                        </div>
+
+                        <div class="m-2">
+                            <label class="form-label m-1" for="requisitos">Vagas</label>
+                            <input class="form-control form-control-sm m-1" type="number" id="vagas">
+                        </div>
+
+                        <div class="m-2">
+                            <label class="form-label m-1" for="periodo">Periodo</label>
+                            <select class="form-select form-select-sm m-1" id="periodo">
+                                <option value="Manhã">Manhã</option>
+                                <option value="Tarde">Tarde</option>
+                                <option value="Noite">Noite</option>
+                                <option value="Integral">Integral</option>
+                            </select>
+                        </div>
+
+                        <div class="m-2">
+                            <label class="form-label m-1" for="dias_semana">Dias da Semana</label>
+                            <select class="form-select form-select-sm m-1" id="dias_semana">
+                                <option value="semana">Seg. a Sex.</option>
+                                <option value="sabados">Sábados</option>
+                            </select>
+                        </div>
+
+                        <div class="m-2">
+                            <label class="form-label m-1" for="tipo">Tipo</label>
+                            <select class="form-select form-select-sm m-1" id="tipo">
+                                <option value="tecnico">Ensino técnico</option>
+                                <option value="medio">Ensino médio técnico</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <input type="button" class="btn btn-primary m-1 p-1" value="SALVAR" id="btn_salvar">
+                    </div>
+
+                    <p id="msg_cadastro" class="lead text-danger"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../site_etec/JS/curso_crud.js"></script>
+</body>
+</html>

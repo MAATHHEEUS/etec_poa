@@ -10,12 +10,12 @@ if($conect == false){
     return;
 }
 
-$acao = $_POST['acao'];
+$acao = mysqli_real_escape_string($conn, $_POST['acao']);
 # Executa a ação solicitada pelo sistema    
 switch ($acao) {
     case 'carregaNoticias':
         # Busca as oportunidades
-        $qry = "select * from tb_noticias order by dtcad desc limit 2";
+        $qry = "select * from tb_noticias order by dtcad desc limit " . getQuantidadeNoticias();
         $resultset = mysqli_query($conn, $qry);
 
         # Verifica se deu certo a consulta
@@ -34,9 +34,12 @@ switch ($acao) {
         if ($qntd > 0) {
             $contador = 0;
             while($row = mysqli_fetch_assoc($resultset)){
-                # Times
-                $noticias .= "<h2>" . $row['titulo'] . " - (" . $row['dtcad'] . ")</h2>";
-                $noticias .= '<div clas="noticia"><img src="../../imagens/logo.png" alt="imagem da noticia 1"><p>' . $row['descricao'] . '</p></div><br>';
+                # Formata data vinda do banco
+                $dtformat = converteData('padrao', $row['dtcad']);
+                
+                # Monta as noticias
+                $noticias .= "<h2>" . $row['titulo'] . " - (" . $dtformat . ")</h2>";
+                $noticias .= '<div clas="p-3 mb-2 bg-dark text-white noticia"><img class="img-thumbnail img-fluid" width="300px" height="300px" src="../../imagens/' . $row['nome_arq'] . '" alt="' . $row['nome_arq'] . '"><p class="font-monospace lh-base">' . $row['descricao'] . '</p></div><br>';
                 $contador++;
             }
         }
@@ -58,7 +61,7 @@ switch ($acao) {
         break;
 
     case 'dadosOportunidade':
-        $id_oportunidade = $_POST['id_oportunidade'];
+        $id_oportunidade = mysqli_real_escape_string($conn, $_POST['id_oportunidade']);
 
         # Busca informações do curso
         $qry = "select * from tb_oportunidades where oportunidade_id = '$id_oportunidade'";

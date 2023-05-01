@@ -2,7 +2,7 @@
 var modal = document.getElementById("caixa1");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("btn-close")[0];
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
@@ -25,7 +25,7 @@ function abrirDiv(id_oportunidade){
     dados.append('acao', 'dadosOportunidade')
     dados.append('id_oportunidade', id_oportunidade)
     $.ajax({
-    url: '../PHP/oportunidades.php',
+    url: '../site_etec/PHP/oportunidades.php',
     method: 'post',
     data: dados,
     processData: false,
@@ -56,7 +56,7 @@ $(document).ready(
         let dados = new FormData()
         dados.append('acao', 'carregaOportunidades')
         $.ajax({
-        url: '../PHP/oportunidades.php',
+        url: '../site_etec/PHP/oportunidades.php',
         method: 'post',
         data: dados,
         processData: false,

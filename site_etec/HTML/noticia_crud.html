@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Crud de Curso</title>
+</head>
+<body>
+    <div id="caixa1">
+        <div class="container-fluid">
+            <div class="caixa_inf">
+                <div class="titulo">
+                    <h1>NOTICIAS</h1>
+                </div>
+                
+                <div class="conteudo">
+                    <br>
+                    <input type="button" class="btn btn-info m-1 p-1" value="Cadastrar" id="btn_abrir_cadastro">
+                    <div class="caixa_cursos" id="noticias">
+                        <div id="grid" class="table-responsive"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="div_cadastro" class="modal modal-lg">
+        <div class="modal-dialog">
+            <div class="caixa_inf modal-content">
+                <!-- Botão de Fechar [x] -->
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastro de notícia</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="caixa_cursos">
+                        <div class="m-2">
+                            <label class="form-label m-0" for="titulo">Título:</label>
+                            <input class="form-control form-control-sm m-0" type="text" id="titulo">
+                        </div>
+
+                        <div class="m-2">
+                            <label class="form-label m-1" for="descricao">Descrição:</label>
+                            <textarea class="form-control form-control-sm m-0" id="descricao" maxlength="1000"></textarea> 
+                        </div>
+
+                        <div class="m-2">
+                            <label class="form-label m-1" for="imagem">Imagem</label>
+                            <input class="form-control form-control-sm m-1" type="file" id="imagem">
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <input type="button" value="Salvar" id="btn_salvar" class="btn btn-primary m-1 p-1">
+                    </div>
+
+                    <p id="msg_cadastro" class="lead text-danger"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../site_etec/JS/noticias_crud.js"></script>
+</body>
+</html>

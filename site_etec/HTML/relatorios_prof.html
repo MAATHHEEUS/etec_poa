@@ -12,18 +12,23 @@
         <div class="container-fluid">
             <div class="caixa_inf">
                 <div class="titulo">
-                    <h1>DECLARAÇÕES</h1>
+                    <h1>RELATÓRIOS</h1>
                 </div>
                 
                 <div class="conteudo">
                     <div class="caixa_cursos" id="noticias">
-                        <h2>Declaração de Matrícula</h2>
-                        <p><a class="sem_linha" onclick="print('dec_matricula');">dec_matricula.pdf</a></p>
+                        <h2>Relação de Alunos por Matéria</h2>
+
+                        <label class="form-label m-1" for="tipo">Matéria</label>
+                        <select class="form-select form-select-sm m-1" name="materias" id="materias">
+                        </select>
+
+                        <p class="px-2"><a class="text-decoration-none" onclick="print('rel_alunos');">rel_alunos.pdf</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="../site_etec/JS/declaracoes.js"></script>
+    <script src="../site_etec/JS/relatorios_prof.js"></script>
 </body>
 </html>

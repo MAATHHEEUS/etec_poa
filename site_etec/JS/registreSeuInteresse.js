@@ -2,10 +2,16 @@
 var modal = document.getElementById("caixa1");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("btn-close")[0];
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
+  modal.style.display = "none";
+  return;
+}
+
+// When the user clicks on <span> (x), close the modal
+function fecharPoliticas() {
   modal.style.display = "none";
   return;
 }
@@ -27,7 +33,6 @@ function abrirDiv(){
 
 $('#btn_enviar').click(
     function () {
-        alert(window.location.search)
         var politicas = document.getElementById("politicas");
         if(!politicas.checked){
             alert('Aceite as Politícas e Termos de Privacidade!')
@@ -45,12 +50,14 @@ $('#btn_enviar').click(
         dados.append('acao', 'registrar')
         dados.append('nome', $('#nome').val())
         dados.append('email', $('#email').val())
+        dados.append('interesse', $('#interesse').val())
         dados.append('ddd', $('#ddd1').val())
         dados.append('telefone', $('#numero1').val())
         dados.append('periodo', $('#periodo').val())
+        dados.append('curso', getParameter('nome_curso'))
         dados.append('diassemana', $('#diassemana').val())
         $.ajax({
-        url: '../PHP/registreSeuInteresse.php',
+        url: '../site_etec/PHP/registreSeuInteresse.php',
         method: 'post',
         data: dados,
         processData: false,
@@ -69,6 +76,7 @@ $('#btn_enviar').click(
                 $('#numero1').val('')
                 $('#ddd2').val('')
                 $('#numero2').val('')
+                $('#interesse').val('')
             }
         } )
         return

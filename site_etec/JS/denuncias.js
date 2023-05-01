@@ -8,7 +8,7 @@ $('#btn_enviar').click(
         dados.append('acao', 'salvar')
         dados.append('descricao', $('#descricao').val())
         $.ajax({
-        url: '../PHP/denuncias.php',
+        url: '../site_etec/PHP/denuncias.php',
         method: 'post',
         data: dados,
         processData: false,

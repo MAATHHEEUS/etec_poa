@@ -10,12 +10,12 @@ if($conect == false){
     return;
 }
 
-$acao = $_POST['acao'];
+$acao = mysqli_real_escape_string($conn, $_POST['acao']);
 # Executa a ação solicitada pelo sistema    
 switch ($acao) {
     case 'carregaVagas':
         # Busca as vagas remanescentes
-        $qry = "select * from tb_vagas order by curso";
+        $qry = "select * from tb_cursos where qtde_vagas <> 0 and excluido = 'N' order by nome";
         $resultset = mysqli_query($conn, $qry);
 
         # Verifica se deu certo a consulta
@@ -33,29 +33,29 @@ switch ($acao) {
         $qntd = mysqli_num_rows($resultset);
         if ($qntd > 0) {
             # Monta a grid 
-            $grid = "<table class='table table-holver table-striped table-bordered'>";
-            $grid .= "<tr>";
+            $grid = "<table class='table table-hover table-light'>";
+            $grid .= "<thead class=\"thead-dark\"><tr>";
             $grid .= "<th>Curso</th>";
             $grid .= "<th>Quantidade Vagas</th>";
             $grid .= "<th></th>";
-            $grid .= "</tr>";
+            $grid .= "</tr></thead><tbody>";
             
             $contador = 0;
             while($row = mysqli_fetch_assoc($resultset)){
                 # Times
                 $grid .= "<tr>";
-                $grid .= "<td>".$row['curso']."</td>";
-                $grid .= "<td>".$row['quantidade']."</td>";
-                $grid .= "<td><button onclick=\"abrirDiv(".$row['curso_id'].")\" class='btn btn-danger'>Inscrever-se</button></td>";
+                $grid .= "<td>".$row['nome']."</td>";
+                $grid .= "<td>".$row['qtde_vagas']."</td>";
+                $grid .= "<td><button onclick=\"abrirDiv(".$row['id_curso'].")\" class='btn btn-danger m-1 btn-sm p-1'>INSCREVER-SE</button></td>";
                 $grid .= "</tr>";
 
             }
-            $grid .= "</tr>";
+            $grid .= "</tbody>";
         }
         else{
             echo json_encode(array(
                 'tipo' => 'E',
-                'msg' => 'NENHUMA VAGAS REMANESCENTE CADASTRADA!'
+                'msg' => 'NENHUMA VAGA REMANESCENTE CADASTRADA!'
             ));
             return;            
             break;
@@ -70,7 +70,7 @@ switch ($acao) {
         break;
 
     case 'dadosCurso':
-        $id_curso = $_POST['id_curso'];
+        $id_curso = mysqli_real_escape_string($conn, $_POST['id_curso']);
 
         # Busca informações do curso
         $qry = "select * from tb_cursos where id_curso = '$id_curso'";

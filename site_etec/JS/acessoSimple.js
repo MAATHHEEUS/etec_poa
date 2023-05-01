@@ -9,7 +9,7 @@ $('#btn_enviar').click(
         dados.append('email', $('#email').val())
         dados.append('senha', $('#senha').val())
         $.ajax({
-        url: '../PHP/acessoSimple.php',
+        url: '../site_etec/PHP/acessoSimple.php',
         method: 'post',
         data: dados,
         processData: false,
@@ -26,7 +26,11 @@ $('#btn_enviar').click(
                     document.getElementById('cadSenha').removeAttribute('hidden')
                     return
                 }
-                open('index.html?usuario='+resposta.usuarioId, '_self')
+                var encrypted = CryptoJS.AES.encrypt('usuario='+resposta.usuarioId+'&tipo='+resposta.tipo_usr, "aes-128-gcm");
+                while(String(encrypted).includes('+') || String(encrypted).includes('&')){
+                    var encrypted = CryptoJS.AES.encrypt('usuario='+resposta.usuarioId+'&tipo='+resposta.tipo_usr, "aes-128-gcm");
+                }
+                open('http://etecpoa.great-site.net/?sessao='+encrypted, '_self')
             }
         } )
         return
@@ -44,7 +48,7 @@ $('#btn_cadsenha').click(
         dados.append('email', $('#email').val())
         dados.append('senha', $('#novaSenha').val())
         $.ajax({
-        url: '../PHP/acessoSimple.php',
+        url: '../site_etec/PHP/acessoSimple.php',
         method: 'post',
         data: dados,
         processData: false,

@@ -10,12 +10,12 @@ if($conect == false){
     return;
 }
 
-$acao = $_POST['acao'];
+$acao = mysqli_real_escape_string($conn, $_POST['acao']);
 # Executa a ação solicitada pelo sistema    
 switch ($acao) {
     case 'carregaOportunidades':
         # Busca as oportunidades
-        $qry = "select * from tb_oportunidades order by nome";
+        $qry = "select * from tb_oportunidades where excluido = 'N' order by nome";
         $resultset = mysqli_query($conn, $qry);
 
         # Verifica se deu certo a consulta
@@ -33,13 +33,13 @@ switch ($acao) {
         $qntd = mysqli_num_rows($resultset);
         if ($qntd > 0) {
             # Monta a grid 
-            $grid = "<table class='table table-holver table-striped table-bordered'>";
-            $grid .= "<tr>";
+            $grid = "<table class='table table-hover table-light'>";
+            $grid .= "<thead class=\"thead-dark\"><tr>";
             $grid .= "<th>Nome</th>";
             $grid .= "<th>Área</th>";
             $grid .= "<th>Empresa</th>";
             $grid .= "<th></th>";
-            $grid .= "</tr>";
+            $grid .= "</tr></thead><tbody>";
             
             while($row = mysqli_fetch_assoc($resultset)){
                 # Times
@@ -47,16 +47,16 @@ switch ($acao) {
                 $grid .= "<td>".$row['nome']."</td>";
                 $grid .= "<td>".$row['area']."</td>";
                 $grid .= "<td>".$row['empresa']."</td>";
-                $grid .= "<td><button onclick=\"abrirDiv(".$row['oportunidade_id'].")\" class='btn btn-danger'>Informações</button></td>";
+                $grid .= "<td><button onclick=\"abrirDiv(".$row['oportunidade_id'].")\" class='btn btn-danger m-1 btn-sm p-1'>INFORMAÇÕES</button></td>";
                 $grid .= "</tr>";
 
             }
-            $grid .= "</tr>";
+            $grid .= "</tbody>";
         }
         else{
             echo json_encode(array(
                 'tipo' => 'E',
-                'msg' => 'NENHUMA VAGA DE ESTÁGIO OU BOLSA DISPONÍVEL NO MOMENTO.!'
+                'msg' => 'NENHUMA VAGA DE ESTÁGIO OU BOLSA DISPONÍVEL NO MOMENTO!'
             ));
             return;            
             break;
@@ -71,7 +71,7 @@ switch ($acao) {
         break;
 
     case 'dadosOportunidade':
-        $id_oportunidade = $_POST['id_oportunidade'];
+        $id_oportunidade = mysqli_real_escape_string($conn, $_POST['id_oportunidade']);
 
         # Busca informações do curso
         $qry = "select * from tb_oportunidades where oportunidade_id = '$id_oportunidade'";

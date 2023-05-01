@@ -11,11 +11,12 @@ if($conect == false){
     return;
 }
 
-$acao = $_POST['acao'];
+$acao = mysqli_real_escape_string($conn, $_POST['acao']);
 # Executa a ação solicitada pelo sistema    
 switch ($acao) {
     case 'buscar':
-        $conteudo = $_POST['conteudo'];
+        $conteudo = mysqli_real_escape_string($conn, $_POST['conteudo']);
+        
         # Busca as dúvidas
         $qry = "select * from tb_interacoes where descricao like '%$conteudo%' order by dt_cad desc limit 2";
         $resultset = mysqli_query($conn, $qry);
@@ -36,8 +37,10 @@ switch ($acao) {
         if ($qntd > 0) {
             while($row = mysqli_fetch_assoc($resultset)){
                 # Busca duas respostas para cada interação(id_pergunta)
-                $respostas = '<h4>Respostas:</h4>';
+                $respostas = '<h4>Últimas respostas:</h4>';
+                
                 $qry = "select * from tb_respostas where id_pergunta = " . $row['id_pergunta'] . " order by dt_cad desc limit 2";
+                
                 $resultset2 = mysqli_query($conn, $qry);
 
                 # Verifica se deu certo a consulta
@@ -54,21 +57,26 @@ switch ($acao) {
                 $qntd2 = mysqli_num_rows($resultset2);
                 if ($qntd2 > 0) {
                     while($row2 = mysqli_fetch_assoc($resultset2)){
-                        $respostas .= '<p>' . $row2['descricao'] . '<strong> - ' . $row2    ['autor'] . ' - ' . $row2['dt_cad'] . '</strong></p></div>';
+                        $dtFormat = converteData('padrao', $row2['dt_cad']);
+                        $respostas .= '<p class="text-break text-bg-light p-1">' . $row2['descricao'] . '<strong> - ' . $row2    ['autor'] . ' - ' . $dtFormat . '</strong></p><hr>';
                     }
+                }else{
+                    $respostas .= '<p class="text-danger">Ainda sem respostas!</p><hr>';
                 }
-                $interacoes .= "<h2>" . $row['autor'] . " - (" . $row['dt_cad'] . ")</h2><p>" . $row['descricao'] . "</p>
-                <br>";
-                $interacoes .= $respostas;
-                $interacoes .= '<div class="mb-3">
-                <input type="button" value="RESPONDER" onclick="responder(' . $row['id_pergunta'] . ');" class="">
+                
+                $dtFormat = converteData('padrao', $row['dt_cad']);
+                $interacoes .= "<h2>" . $row['autor'] . " - (" . $dtFormat . ")</h2><p class=\"text-break text-bg-light p-1\">" . $row['descricao'] . "</p>";
+                
+                $interacoes .= '<div class="d-grid gap-2">
+                <input type="button" value="RESPONDER" onclick="responder(' . $row['id_pergunta'] . ');" class="btn btn-success m-1 p-1">
                 </div><br>';
+                $interacoes .= $respostas;
             }
         }
         else{
             echo json_encode(array(
                 'tipo' => 'OK',
-                'msg' => 'NENHUMA PERGUNDA DISPONÍVEL NO MOMENTO.!',
+                'msg' => 'NENHUMA PERGUNDA DISPONÍVEL NO MOMENTO!',
                 'interacoes' => ''
             ));
             return;            
@@ -84,8 +92,8 @@ switch ($acao) {
         break;
 
     case 'perguntar':
-        $descricao = $_POST['descricao'];
-        $autor = $_POST['autor'];
+        $descricao = mysqli_real_escape_string($conn, $_POST['descricao']);
+        $autor = mysqli_real_escape_string($conn, $_POST['autor']);
 
         $today = getdate();
         $dt_cad = $today['year']."-".$today['mon']."-".$today['mday'];
@@ -112,7 +120,7 @@ switch ($acao) {
         break;
 
     case 'dadosPergunta':
-        $id_pergunta = $_POST['id_pergunta'];
+        $id_pergunta = mysqli_real_escape_string($conn, $_POST['id_pergunta']);
 
         # Busca
         $qry = "select * from tb_interacoes where id_pergunta = '$id_pergunta'";
@@ -139,9 +147,9 @@ switch ($acao) {
         break;
 
     case 'responder':
-        $descricao = $_POST['descricao'];
-        $autor = $_POST['autor'];
-        $id_pergunta = $_POST['id_pergunta'];
+        $descricao = mysqli_real_escape_string($conn, $_POST['descricao']);
+        $autor = mysqli_real_escape_string($conn, $_POST['autor']);
+        $id_pergunta = mysqli_real_escape_string($conn, $_POST['id_pergunta']);
 
         $today = getdate();
         $dt_cad = $today['year']."-".$today['mon']."-".$today['mday'];

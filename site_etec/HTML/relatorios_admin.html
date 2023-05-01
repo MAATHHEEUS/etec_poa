@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Declarações</title>
+</head>
+<body>
+    <div id="caixa1">
+        <div class="container-fluid">
+            <div class="caixa_inf">
+                <div class="titulo">
+                    <h1>RELATÓRIOS</h1>
+                </div>
+                
+                <div class="conteudo">
+                    <div class="caixa_cursos" id="noticias">
+                        <h2>Relação de Denuncias e Sugestões</h2>
+                        
+                        <label class="form-label m-1" for='periodo'>Período </label>
+                        <select class="form-select form-select-sm m-1" name="periodo" id="periodo">
+                            <option value="semana">1 semana</option>
+                            <option value="mes">1 mês</option>
+                            <option value="meses">3 meses</option>
+                            <option value="ano">1 ano</option>
+                        </select>
+                        <p class="px-2"><a class="text-decoration-none" onclick="print('rel_denuncias&sugestoes');">rel_denuncias&sugestoes.pdf</a></p>
+                        
+                        <h2>Relação de Inscrições por curso</h2>
+                        <select class="form-select form-select-sm m-1" name="cursos_rel_admin" id="cursos_rel_admin"></select>
+                        <p class="px-2"><a class="text-decoration-none" onclick="print('rel_inscricoes');">rel_inscricoes.pdf</a></p>
+
+                        <h2>Relação de Registros de Interesse</h2>
+                        <p class="px-2"><a class="text-decoration-none" onclick="print('rel_interesses');">rel_interesses.pdf</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../site_etec/JS/relatorios_admin.js"></script>
+</body>
+</html>

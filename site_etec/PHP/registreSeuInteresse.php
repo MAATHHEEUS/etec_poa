@@ -10,22 +10,25 @@ if($conect == false){
     return;
 }
 
-$acao = $_POST['acao'];
+$acao = mysqli_real_escape_string($conn, $_POST['acao']);
 # Executa a ação solicitada pelo sistema    
 switch ($acao) {
     case 'registrar':
-        $nome = $_POST['nome'];
-        $email = $_POST['email'];
-        $ddd = $_POST['ddd'];
-        $telefone = $_POST['telefone'];
-        $periodo = $_POST['periodo'];
-        $diassemana = $_POST['diassemana'];
-        $qry = "INSERT INTO `tb_interesse`(`id_interesse`, `nome`, `email`, `ddd`, `telefone`, `periodo`, `diassemana`) VALUES (default,'$nome','$email','$ddd', '$telefone', '$periodo', '$diassemana')";
+        $nome = mysqli_real_escape_string($conn, $_POST['nome']);
+        $curso = mysqli_real_escape_string($conn, $_POST['curso']);
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $ddd = mysqli_real_escape_string($conn, $_POST['ddd']);
+        $telefone = mysqli_real_escape_string($conn, $_POST['telefone']);
+        $periodo = mysqli_real_escape_string($conn, $_POST['periodo']);
+        $diassemana = mysqli_real_escape_string($conn, $_POST['diassemana']);
+        $interesse = mysqli_real_escape_string($conn, $_POST['interesse']);
+
+        $qry = "INSERT INTO `tb_interesse`(`id_interesse`, `nome`, `email`, `ddd`, `telefone`, `periodo`, `diassemana`, `curso`, `descricao`) VALUES (default,'$nome','$email','$ddd', '$telefone', '$periodo', '$diassemana', '$curso', '$interesse')";
 
         if (!mysqli_query($conn, $qry)){
             echo json_encode(array(
                 'tipo' => 'E',
-                'msg' => "Erro ao inserir as informações!" . mysqli_error($conn)
+                'msg' => "Erro ao inserir as informações!" . $qry
             ));
             return;
             break;

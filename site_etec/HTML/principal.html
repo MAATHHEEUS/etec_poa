@@ -6,12 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Principal</title>
-    <link rel="stylesheet" href="../CSS/index.css">
-    <link href="../CSS/css-bootstrap/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div id="caixa1">
-        <div class="container">
+        <div class="container-fluid">
             <div class="caixa_inf">
                 <div class="titulo">
                     <h1>ÚLTIMAS NOTÍCIAS</h1>
@@ -19,63 +17,67 @@
                 
                 <div class="conteudo">
                     <div class="caixa_cursos" id="noticias">
-                        <h2>Notícia 1 (23/01/23)</h2>
-                        <div clas="noticia">
-                            <img src="../../imagens/logo.png" alt="imagem da noticia 1">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos iure, molestiae deleniti doloribus facere voluptates vel earum omnis rerum, quas blanditiis numquam mollitia voluptatum temporibus placeat fuga asperiores velit?</p>
-                        </div>
-                        <br>
-                        <h2>Notícia 2</h2>
-                        <div clas="noticia">
-                            <img src="../../imagens/logo.png" alt="imagem da noticia 2">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos iure, molestiae deleniti doloribus facere voluptates vel earum omnis rerum, quas blanditiis numquam mollitia voluptatum temporibus placeat fuga asperiores velit?</p>
-                        </div>
+                        Carregando as Notícias ...
                         <br>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <BR></BR>
-    <div id="caixa2">
-        <div class="container">
+
+    <div id="caixa2 m-2">
+        <div class="container-fluid">
             <div class="caixa_inf">
                 <div class="titulo">
                     <h1>ETEC DE POÁ</h1>
                 </div>
-                <br>
-                <a href="https://www.vestibulinhoetec.com.br/home/" target="_blank" class="btn_insc">
-                    Increva-se <img src="../../imagens/seta_direita.png" alt="Ícone de usuário" class="icon">
-                </a>
+
                 <div class="conteudo">
-                    Av. Vital Brasil, 827 - Vl. Acoreana <br>
-                    CEP 08557-000 - Poá/SP <br>
-                    Telefone: (11)4636-8085 <br>
-                    Telefone: (11)4636-7993 <br>
-                    E-mail: e210dir@cps.sp.gov.br <br>
-                    E-mail: e210dir@cps.sp.gov.br <br>
-                    E-mail: rosemeire.cardoso01@etec.sp.gov.br <br>
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="../../imagens/foto_etec.jpg" class="img-fluid rounded-start" alt="Etec">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Etec de Poá</h5>
+                                    <p class="card-text">
+                                        Av. Vital Brasil, 827 - Vl. Acoreana - 08557-000 - Poá/SP <br>
+                                        Telefone: (11)4636-8085 <br>
+                                        Telefone: (11)4636-7993 <br>
+                                        E-mail: e210dir@cps.sp.gov.br <br>
+                                        E-mail: e210dir@cps.sp.gov.br <br>
+                                        E-mail: rosemeire.cardoso01@etec.sp.gov.br
+                                    </p>
+                                    <a href="https://www.google.com/maps/place/ETEC+Po%C3%A1/@-23.5133664,-46.3430237,17z/data=!4m6!3m5!1s0x94ce7b3d56997a17:0x54f4214e9220a7f2!8m2!3d-23.5135951!4d-46.3435453!16s%2Fg%2F121k3mcf" target="_blank" class="btn btn-warning m-1">VENHA NOS CONHECER!</a>
+                                    <a href="https://www.vestibulinhoetec.com.br/home/" target="_blank" class="btn btn-danger m-1">INCREVA-SE!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="caixa_cursos">
                         <h4>Cursos Oferecidos</h4>
                         <ul class="lista_cursos" id="lista_cursos">
                             <li class="item_curso">
-                                <a onclick="loadPag('principal', 'registreSeuInteresse.html?nome_curso=ADM');" class="sem_linha">Administração</a>
+                                <a onclick="loadPag('principal', '../site_etec/HTML/registreSeuInteresse.html?nome_curso=ADM');" class="sem_linha">Administração</a>
                                 <p><Strong>Período: </Strong>Noite - 40 vagas</p>
                             </li>
 
                             <li class="item_curso">
-                                <a onclick="loadPag('principal', 'registreSeuInteresse.html?nome_curso=DS');"  class="sem_linha">Desenvolvimento de Sistemas</a>
+                                <a onclick="loadPag('principal', '../site_etec/HTML/registreSeuInteresse.html?nome_curso=DS');"  class="sem_linha">Desenvolvimento de Sistemas</a>
                                 <p><Strong>Período: </Strong>Noite - 40 vagas</p>
                             </li>
 
                             <li class="item_curso">
-                                <a onclick="loadPag('principal', 'registreSeuInteresse.html?nome_curso=INFONET');" class="sem_linha">Informática para Internet</a>
+                                <a onclick="loadPag('principal', '../site_etec/HTML/registreSeuInteresse.html?nome_curso=INFONET');" class="sem_linha">Informática para Internet</a>
                                 <p><Strong>Período: </Strong>Noite - 40 vagas</p>
                             </li>
 
                             <li class="item_curso">
-                                <a onclick="loadPag('principal', 'registreSeuInteresse.html?nome_curso=EMT');" class="sem_linha">Ensino médio - Técnico</a>
+                                <a onclick="loadPag('principal', '../site_etec/HTML/registreSeuInteresse.html?nome_curso=EMT');" class="sem_linha">Ensino médio - Técnico</a>
                                 <p><Strong>Período: </Strong>Integral - 40 vagas</p>
                             </li>
                         </ul>
@@ -84,6 +86,6 @@
             </div>
         </div>
     </div>
-    <script src="../JS/principal.js"></script>
+    <script src="../site_etec/JS/principal.js"></script>
 </body>
 </html>
