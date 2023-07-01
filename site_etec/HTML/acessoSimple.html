@@ -6,56 +6,50 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="../site_etec/CSS/index.css">
+    <link rel="stylesheet" href="../site_etec/CSS/style.css">
+    <script src="https://kit.fontawesome.com/cf6fa412bd.js"></script>
 </head>
 <body>
-    <br>
-    <div id="caixa2">
-        <div class="container-fluid">
-            <div class="caixa_inf">
-                <div class="titulo">
-                    <h1>LOGIN</h1>
-                </div>
-                <br>
-                
-                <div class="conteudo">
-                    <p class="fs-1 m-1 text-dark lead">Olá seja Bem-Vindo!</p>
-                    
-                    <div class="caixa_cursos">
-                        <div id="nome_curso">
-                            <h4 class="fs-2 text-warning font-family-Verdana font-monospace">SIMPLE</h4>
-                        </div>
-
-                        <div class="m-2">
-                            <label class="form-label m-1" for="email">E-mail</label>
-                            <input type="email" id="email" class="form-control form-control-sm m-1" required>
-                        </div>
-
-                        <div class="m-2">
-                            <label class="form-label m-1" for="senha">Senha</label>
-                            <input type="password" id="senha" class="form-control form-control-sm m-1" maxlength="60" required>
-                        </div>
-
-                        <div hidden id="cadSenha">
-                            <div class="m-2">
-                                <label class="form-label m-1" for="senha">Nova Senha</label>
-                                <input type="password" id="novaSenha" class="form-control form-control-sm m-1" maxlength="60" required>
-                            </div>
-
-                            <div class="d-grid gap-2">
-                                <input type="button" value="CADASTRAR" id="btn_cadsenha" class="btn btn-success m-1 p-1">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-grid gap-2">
-                        <input type="button" value="LOGAR" id="btn_enviar" class="btn btn-primary m-1 p-1">
-                    </div>
-
-                    <p id="msg" class="lead text-danger"></p>
-                </div>
+<div class="container-login" id="caixa2">
+    <div class="imgbox">
+        <!-- <img src="../../imagens/pul.jpg" alt="dois homens pulando"> -->
+        <img src="../../imagens/mascote.jpg" alt="Imagem">
+    </div>
+    <div class="boxconteudo">
+        <div class="formbox" id="nome_curso">
+            <div>
+                <img src="../../imagens/HelplessBook.png" alt="Simple" class="img-fluid" style="width: 5rem;margin-left: 10rem;">
             </div>
+            <h2>Olá! Seja bem vindo!</h2>
+            <Form>
+                <div class="inputbox">
+                    <span>Email</span>
+                    <input type="email" placeholder="digite seu e-mail" id="email" required>
+                </div>
+                <div class="inputbox">
+                    <span>Senha</span>
+                    <input type="password" placeholder="digite sua senha" id="senha" required>
+                </div>
+                <div class="inputbox" hidden id="cadSenha">
+                    <span>Nova Senha</span>
+                    <input type="password"  placeholder="digite a nova senha" id="novaSenha" required>
+                </div>
+                <div class="lembrar">
+                    <label style="color: indigo;"><input type="checkbox">Lembrar senha</label>
+                    <a style="color: indigo; cursor: pointer;" href="../site_etec/PHP/EsqueceuSenha.php">Esqueceu a senha</a>
+                </div>
+
+                <div class="inputbox">
+                    <input type="submit" value="Entrar" id="btn_enviar" style="background: lavender;color: indigo;" onMouseOver="onMouseOver(this);" onMouseOut="onMouseOut(this);">
+                </div>
+                <div class="inputbox" hidden>
+                    <input type="submit" value="Registrar" id="btn_cadsenha" style="background: lavender;color: indigo;" onMouseOver="onMouseOver(this);" onMouseOut="onMouseOut(this);">
+                </div>
+                <p id="msg" class="lead text-danger"></p>
+            </Form>
         </div>
     </div>
-    <script src="../site_etec/JS/acessoSimple.js"></script>
+</div>
+<script src="../site_etec/JS/acessoSimple.js"></script>
 </body>
-</html>
+</html> 

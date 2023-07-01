@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +8,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Principal</title>
 </head>
+
 <body>
+
     <div id="caixa1">
-        <div class="container-fluid">
+        <div class="w3-content w3-display-container">
             <div class="caixa_inf">
-                <div class="titulo">
-                    <h1>ÚLTIMAS NOTÍCIAS</h1>
-                </div>
-                
                 <div class="conteudo">
                     <div class="caixa_cursos" id="noticias">
                         Carregando as Notícias ...
@@ -22,65 +21,110 @@
                     </div>
                 </div>
             </div>
+            <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
+            <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
         </div>
     </div>
-
-    <BR></BR>
-
-    <div id="caixa2 m-2">
-        <div class="container-fluid">
-            <div class="caixa_inf">
-                <div class="titulo">
-                    <h1>ETEC DE POÁ</h1>
-                </div>
-
-                <div class="conteudo">
-                    <div class="card mb-3">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="../../imagens/foto_etec.jpg" class="img-fluid rounded-start" alt="Etec">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Etec de Poá</h5>
-                                    <p class="card-text">
-                                        Av. Vital Brasil, 827 - Vl. Acoreana - 08557-000 - Poá/SP <br>
-                                        Telefone: (11)4636-8085 <br>
-                                        Telefone: (11)4636-7993 <br>
-                                        E-mail: e210dir@cps.sp.gov.br <br>
-                                        E-mail: e210dir@cps.sp.gov.br <br>
-                                        E-mail: rosemeire.cardoso01@etec.sp.gov.br
-                                    </p>
-                                    <a href="https://www.google.com/maps/place/ETEC+Po%C3%A1/@-23.5133664,-46.3430237,17z/data=!4m6!3m5!1s0x94ce7b3d56997a17:0x54f4214e9220a7f2!8m2!3d-23.5135951!4d-46.3435453!16s%2Fg%2F121k3mcf" target="_blank" class="btn btn-warning m-1">VENHA NOS CONHECER!</a>
-                                    <a href="https://www.vestibulinhoetec.com.br/home/" target="_blank" class="btn btn-danger m-1">INCREVA-SE!</a>
-                                </div>
-                            </div>
+    
+    <div id="caixa2">
+        <div class="caixa_cursos">
+            <div class="container px-4 py-5" id="hanging-icons">
+                <h2 class="pb-2 border-bottom">Cursos Oferecidos</h2>
+                <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+                    <div class="col d-flex align-items-start">
+                        <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-graph-up" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07Z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2>Técnico em Administração</h2>
+                            <p>Um curso técnico em administração oferece aos estudantes uma base sólida de conhecimentos e
+                                habilidades essenciais para o mundo dos negócios.
+                            </p>
+                            <a onclick="loadPag('principal', '../site_etec/HTML/registreSeuInteresse.html?nome_curso=ADM');" class="btn btn-dark" style="background: #273336;">
+                                Tenho interesse
+                            </a>
                         </div>
                     </div>
-                    
-                    <div class="caixa_cursos">
-                        <h4>Cursos Oferecidos</h4>
-                        <ul class="lista_cursos" id="lista_cursos">
-                            <li class="item_curso">
-                                <a onclick="loadPag('principal', '../site_etec/HTML/registreSeuInteresse.html?nome_curso=ADM');" class="sem_linha">Administração</a>
-                                <p><Strong>Período: </Strong>Noite - 40 vagas</p>
-                            </li>
 
-                            <li class="item_curso">
-                                <a onclick="loadPag('principal', '../site_etec/HTML/registreSeuInteresse.html?nome_curso=DS');"  class="sem_linha">Desenvolvimento de Sistemas</a>
-                                <p><Strong>Período: </Strong>Noite - 40 vagas</p>
-                            </li>
+                    <div class="col d-flex align-items-start">
+                        <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-pc-display" viewBox="0 0 16 16">
+                                <path d="M8 1a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V1Zm1 13.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0Zm2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0ZM9.5 1a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5ZM9 3.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1h-5a.5.5 0 0 0-.5.5ZM1.5 2A1.5 1.5 0 0 0 0 3.5v7A1.5 1.5 0 0 0 1.5 12H6v2h-.5a.5.5 0 0 0 0 1H7v-4H1.5a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5H7V2H1.5Z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h2>Técnico em Informatica para Internet</h2>
+                            <p>Um curso técnico em informática para internet é uma excelente opção para quem busca adquirir
+                                habilidades e conhecimentos na área de tecnologia da informação voltada para a web. 
+                            </p>
+                            <a onclick="loadPag('principal', '../site_etec/HTML/registreSeuInteresse.html?nome_curso=INFONET');" class="btn btn-dark" style="background: #273336;">
+                                Tenho interesse
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                        <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-book-half" viewBox="0 0 16 16">
+                                <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h2>Ensino Médio integrado ao técnico (M-Tec)</h2>
+                            <p>O Ensino Médio integrado ao técnico é uma modalidade de ensino que visa proporcionar aos
+                                estudantes uma formação mais completa e direcionada para o mercado de trabalho.
+                            </p>
+                            <a onclick="loadPag('principal', '../site_etec/HTML/registreSeuInteresse.html?nome_curso=EMT');" class="btn btn-dark" style="background: #273336;">
+                                Tenho interesse
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                            <li class="item_curso">
-                                <a onclick="loadPag('principal', '../site_etec/HTML/registreSeuInteresse.html?nome_curso=INFONET');" class="sem_linha">Informática para Internet</a>
-                                <p><Strong>Período: </Strong>Noite - 40 vagas</p>
-                            </li>
+        <!-- Área  do vestibulinho -->
+        <div class="px-4 pt-5 my-5 text-center border-bottom">
+            <h1 class="display-4 fw-bold">SEJA ALUNO DA ETEC!</h1>
+            <div class="col-lg-6 mx-auto">
+                <p class="lead mb-4">Faça já o vestibulinho e venha estudar conosco!</p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+                    <a href="https://www.vestibulinhoetec.com.br/home/" target="_blank"><button type="button" class="btn btn-danger btn-lg px-4 me-sm-3">Eu quero!</button></a>
+                </div>
+            </div>
+            <div class="overflow-hidden" style="max-height: 30vh;">
+                <div class="container px-5">
+                    <img src="../../imagens/vestibulinho.jpg" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
+                </div>
+            </div>
+        </div>
 
-                            <li class="item_curso">
-                                <a onclick="loadPag('principal', '../site_etec/HTML/registreSeuInteresse.html?nome_curso=EMT');" class="sem_linha">Ensino médio - Técnico</a>
-                                <p><Strong>Período: </Strong>Integral - 40 vagas</p>
-                            </li>
-                        </ul>
+        <!-- Área da Etec -->
+
+        <div class="m-2">
+            <div class="container col-xxl-8 px-4 py-5">
+                <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                    <div class="col-10 col-sm-8 col-lg-6">
+                        <img src="../../imagens/ETECPOA.jpg" class="d-block mx-lg-auto img-fluid" alt="Foto Etec de Poá" width="700" height="500" loading="lazy">
+                    </div>
+                    <div class="col-lg-6">
+                        <h1 class="display-5 fw-bold lh-1 mb-3" id="ondeestudar">ETEC DE POÁ</h1>
+                        <p class="lead">av. Vital Brasil, 827 - Vl. Acoreana - 08557-000 - Poá/SP <br>
+                            Telefone: (11)4636-8085 <br>
+                            Telefone: (11)4636-7993 <br>
+                            E-mail: e210dir@cps.sp.gov.br <br>
+                            E-mail: e210dir@cps.sp.gov.br <br>
+                            E-mail: rosemeire.cardoso01@etec.sp.gov.br
+                        </p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                            <a href="https://www.google.com/maps/place/ETEC+Po%C3%A1/@-23.5133664,-46.3430237,17z/data=!4m6!3m5!1s0x94ce7b3d56997a17:0x54f4214e9220a7f2!8m2!3d-23.5135951!4d-46.3435453!16s%2Fg%2F121k3mcf" class="btn btn-dark" style="background: #273336;" target="_blank" onmouseover="this.style.backgroundColor='#7C0D00'" onmouseout="this.style.backgroundColor='#273336'">
+                                Venha nos Conhecer!
+                            </a>
+                            <a href="https://www.vestibulinhoetec.com.br/home/" class="btn btn-danger" target="_blank">
+                                Inscreva-se!
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -88,4 +132,5 @@
     </div>
     <script src="../site_etec/JS/principal.js"></script>
 </body>
+
 </html>

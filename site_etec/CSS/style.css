@@ -1,0 +1,503 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Poppins&display=swap');
+/* CORPO DA PAGINA */
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+.d-block
+{
+    width: 100%;
+    border-radius: 10px 
+}
+
+body
+{
+    min-height: 100vh;
+    background-color: whitesmoke;
+    color: black;
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+.logo
+{
+    width: 16.5rem; /* aplicar proporcionalidade ao tamanho da imagem*/ 
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+header {
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000; /*controlar o posicionamento do header*/
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    padding: 10px 5%;
+    transition: all .50s ease-in;
+}
+
+.navbarpp
+{
+    display: flex;
+}
+
+.navbarpp a
+{
+    color: rgb(39, 51, 54);
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 5px 0;
+    margin: 0px 50px;
+    transition: all .50s ease-in-out;
+    text-decoration: none;
+}
+
+.navbarpp a:hover
+{
+    color:  rgb(178, 0, 0);
+}
+
+.navbarpp a.ativo 
+{
+    color: rgb(178, 0, 0);
+}
+
+.mainself
+{
+    display: flex;
+    align-items: center;
+}
+
+.mainself a
+{
+    margin-right: 25px;
+    margin-left: 10px;
+    color: rgb(39, 51, 54);
+    font-size: 1.1rem;
+    font-weight: 450;
+    transition: all .50s ease;
+}
+
+.usuario
+{
+    display: flex;
+    align-items: center;
+}
+
+.usuario a
+{
+    color: purple;
+}
+
+.usuario i
+{
+    color: rgb(178, 0, 0);
+    font-size: 1.65rem;
+    margin-right: 7px;
+}
+
+.mainself a:hover
+{
+    color: rgb(178, 0, 0);
+}
+
+#icone-menu
+{
+    font-size: 35px;
+    color: rgb(178, 0, 0) ;
+    cursor: pointer;
+    z-index: 1001;
+    display: none;
+}
+
+.mobile-menu
+{
+    display: block;
+}
+
+
+/* TELA DE LOGIN*/
+.container-login
+{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.imgbox
+{
+    width: 50%;
+    height: 100%;
+    background: lavender;
+    padding: 20px;
+}
+.imgbox img 
+{
+    width: 100%;
+    height: 100%;
+}
+
+.boxconteudo
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.boxconteudo .formbox
+{
+    width: 50%;
+}
+
+.boxconteudo .formbox h2
+{
+    color: indigo;
+    font-weight: 600;
+    font-size: 2em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.boxconteudo .formbox h1
+{
+    color: rgb(1, 90, 90);
+    font-weight: 600;
+    font-size: 2em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    text-align: center;
+}
+
+.boxconteudo .formbox .inputbox
+{
+    margin-bottom: 20px;
+}
+
+.boxconteudo .formbox .inputbox input
+{
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    font-weight: 400;
+    border: none;
+    font-size: 17px;
+    color: grey;
+    background-color: lavender;
+    border-radius: 5px;
+}
+
+
+.boxconteudo .formbox .inputbox span
+{
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: inline-block;
+    color: indigo;
+    font-weight: 400;
+}
+
+.boxconteudo .formbox .inputbox input::placeholder
+{
+    color: #a9adb6;
+}
+
+.boxconteudo .formbox .inputbox input[type=submit]
+{
+    background: rgba(37, 153, 153, 0.788) ;
+    color: rgb(80, 218, 218);
+    outline: none;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.boxconteudo .formbox .inputbox input[type=submit]:hover
+{
+    background-color:  rgb(80, 218, 218);
+    color: rgba(37, 153, 153, 0.788) ;
+}
+
+.boxconteudo .formbox .lembrar
+{
+    margin-bottom: 20px;
+    color: rgb(70, 70, 70);
+    font-weight: 400;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.boxconteudo .formbox .lembrar a 
+{
+    text-decoration: none;
+    color: rgb(70, 70, 70);
+}
+
+.boxconteudo .formbox .lembrar a:hover
+{
+    color: darkcyan;
+}
+
+.boxconteudo .formbox h3
+{
+    color: #607D8B;
+    text-decoration: none;
+    margin: 40px 0 15px;
+    font-weight: 500;
+    text-align: center;
+    font-size: 22px;
+}
+
+@media (max-width:1280px) 
+{
+    /* Navbar */
+    .header
+    {
+        transition: .2s;
+        padding: 14px 2%;
+    }
+    .navbarpp a 
+    {
+        padding: 5px 0;
+        margin: 0px 20px;
+    }
+    .mobile-menu
+    {
+        display: none;
+    }
+
+
+    /* TELA DE LOGIN */ 
+    .container-login .imgbox
+    {
+        display: none;
+    }
+    .container-login .boxconteudo
+    {
+        width: 100%;
+    }
+    .container-login .boxconteudo .formbox
+    {
+        width: 100%;
+        padding: 40px;
+       
+        margin: 50px;
+    }
+    .boxconteudo .formbox .inputbox input
+    {
+        background-color: whitesmoke;
+    }
+    .container-login .boxconteudo .formbox h3
+    {
+        margin: 30px 0 10px;
+    }
+
+    /* FOOTER */
+    .footer-etec
+    {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    
+}
+
+@media (max-width: 1090px)
+/* NAVBAR */ 
+{
+    .mobile-menu
+    {
+        display: block;
+    }
+    .navbarpp
+    {
+        
+        top: 10vh;
+        right: 0;
+        width: 50vw;
+        height: 90vh;
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in;
+        border-top-left-radius: 8px;
+    }
+    .navbarpp li 
+    {
+        margin-left: 0;
+    }
+    .navbarpp a:hover
+    {
+        color:  rgb(178, 0, 0);
+        transform: translateY(5px);
+    }
+    .navbarpp a.ativo
+    {
+        color: rgb(178, 0, 0);
+    }
+
+    .navbarpp.active
+    {
+        transform: translateX(0);
+    }
+
+    @keyframes navLinkFade 
+    {
+        from
+        {
+            opacity: 0;
+            transform: translateX(50px);
+        }    
+        to
+        {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}
+}
+
+
+@media (max-width:450px)
+{ 
+    /* LOGIN */
+  .container-login .boxconteudo .formbox .lembrar
+  {
+    flex-wrap: wrap;
+  }  
+  .container-login .boxconteudo .formbox .lembrar a
+  {
+    flex-wrap: wrap;
+  }  
+   /*footer*/
+  .coluna-footer
+    {
+        width: 100%;
+    }   
+}
+
+
+/* Footer */
+.footer-etec
+{
+    background-color: rgb(39, 51, 54);
+    padding: 70px 0;
+    margin-top: 20vh;
+}
+.conteudo-footer
+{
+    max-width: 1170px;
+    margin: auto;
+}
+.linha-footer
+{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.coluna-footer
+{
+    width: 25%;
+    padding: 0 15px;
+}
+.coluna-footer h4
+{
+    font-size: 18px;
+    color: whitesmoke;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    line-height: 1.5;
+    font-weight: 500;
+    position: relative;
+    text-decoration: none;
+}
+.coluna-footer h4::before
+{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: rgb(178, 0, 0);
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+}
+.coluna-footer ul li
+{
+    margin-bottom: 10px;
+}
+.coluna-footer ul li a
+{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: rgb(178, 0, 0);
+    font-weight: 300;
+    color: whitesmoke;
+    display: block;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin-left: -15%;
+}
+.coluna-footer ul li a:hover
+{
+    color: rgb(178, 0, 0);
+    padding-left: 6px;
+}
+.coluna-footer .redes-sociais a
+{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: whitesmoke;
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    transition: all 0.5s ease;
+    text-decoration: none; 
+}
+.coluna-footer .redes-sociais a:hover
+{
+    color: whitesmoke;
+    background-color: inherit;
+}
+.ul-footer
+{
+    list-style-type: none;
+}
+
+.footer-bottom span
+{
+    text-transform: uppercase;
+    opacity: .4;
+    font-weight: 200;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+
+
+
+

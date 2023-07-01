@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Poppins&display=swap');
+
+
+.container-formbox
+{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+
+.boxconteudoform
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.selectopt
+{
+    width: 99%;
+    background: white;
+    padding: 5px;
+    border: 1px solid rgb(178, 0, 0); /* rgb(39, 51, 54) */
+    border-radius: 5px;
+    font-size: 16px;
+    color: rgb(178, 0, 0);
+}
+
+.boxconteudoform .formboxform .inputboxnumb 
+{
+    display: inline-block;
+    margin-right: 10px;   
+}
+.interessemsg
+{
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    font-weight: 400;
+    border: none;
+    font-size: 17px;
+    color: whitesmoke;
+    background-color: rgb(39, 51, 54);
+    border-radius: 5px; 
+}
+
+#ddd1
+{
+    width: 100px;
+    padding: 10px;
+    outline: none;
+    font-weight: 400;
+    border: none;
+    font-size: 17px;
+    color: whitesmoke;
+    background-color: rgb(39, 51, 54);
+    border-radius: 5px;
+}
+#numero1 
+{
+    width: 200px;
+    padding: 10px;
+    outline: none;
+    font-weight: 400;
+    border: none;
+    font-size: 17px;
+    color: whitesmoke;
+    background-color: rgb(39, 51, 54);
+    border-radius: 5px;
+}
+.boxconteudoform .formboxform .inputboxnumb span
+{
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: flex;
+    color: rgb(39, 51, 54);
+    font-weight: 400;
+}
+.boxconteudoform .formboxform
+{
+    width: 50%;
+    height: 100%;
+}
+
+.boxconteudoform .formboxform h2
+{
+    color: rgb(39, 51, 54);
+    font-weight: 600;
+    font-size: 2em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.boxconteudoform .formboxform h1
+{
+    color: rgb(178, 0, 0);
+    font-weight: 600;
+    font-size: 2em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+}
+
+.boxconteudoform .formboxform .inputboxform
+{
+    margin-bottom: 20px;
+}
+
+.boxconteudoform .formboxform .inputboxform input
+{
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    font-weight: 400;
+    border: none;
+    font-size: 17px;
+    color: whitesmoke;
+    background-color: rgb(39, 51, 54);
+    border-radius: 5px;
+}
+
+
+.boxconteudoform .formboxform .inputboxform span
+{
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: inline-block;
+    color: rgb(39, 51, 54);
+    font-weight: 400;
+}
+
+
+
+.boxconteudoform .formboxform .inputboxform input[type=submit] 
+{
+    background: rgba(178, 0, 0);
+    color: whitesmoke;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.boxconteudoform .formboxform .inputboxform input[type=submit]:hover
+{
+    background-color:  whitesmoke;
+    color: rgba(178, 0, 0);
+}
+
+.boxconteudoform .formboxform .inputboxform input[type=reset] 
+{
+    background: rgba(178, 0, 0);
+    color: whitesmoke;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.3s;
+}
+.boxconteudoform .formboxform .inputboxform input[type=reset]:hover
+{
+    background-color:  whitesmoke;
+    color: rgba(178, 0, 0, 0.788) ;
+}
+.boxconteudoform .formboxform a 
+{
+    text-decoration: underline;
+    color: rgb(178, 0, 0);
+}
+.termspriv
+{
+    margin-bottom: 20px;
+    color: rgb(39, 51, 54);
+    font-weight: 400;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 13px;
+}
+
+
+.boxconteudoform .formboxform .termspriv a:hover
+{
+    color: rgb(39, 51, 54);
+}
+
+.boxconteudoform .formboxform h3
+{
+    color: rgb(39, 51, 54);
+    text-decoration: none;
+    margin: 40px 0 15px;
+    font-weight: 500;
+    text-align: center;
+    font-size: 22px;
+}
+.boxconteudoform .formboxform h4 
+{
+    color: rgb(39, 51, 54);
+    text-decoration: none;
+    font-weight: 100;
+}
+@media (max-width:868px) 
+{
+    .container-formbox .imgbox
+    {
+        display: none;
+    }
+    .container-formbox .boxconteudoform
+    {
+        width: 100%;
+    }
+    .container-formbox .boxconteudoform .formboxform
+    {
+        width: 100%;
+        padding: 40px;
+        margin: 50px;
+    }
+    
+    .boxconteudoform .formboxform .inputboxform input
+    {
+        background-color: rgb(39, 51, 54);
+    }
+    .container-formbox .boxconteudoform .formboxform h3
+    {
+        margin: 30px 0 0px;
+    }
+    .container-formbox .boxconteudoform .formboxform h4
+    {
+        margin: 30px 0 0px;
+    }
+    .inputboxnumb input {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+@media (max-width:450px)
+{ 
+  .container-formbox .boxconteudoform .formboxform .termspriv
+  {
+    flex-wrap: wrap;
+  }  
+  .container-formbox .boxconteudoform .formboxform .termspriv a
+  {
+    flex-wrap: wrap;
+  }  
+  .inputboxnumb input {
+    margin-right: 0;
+    margin-bottom: 10px;
+}
+}
+
+
+
+
+
+
+
+

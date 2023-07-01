@@ -67,3 +67,13 @@ $('#btn_cadsenha').click(
         return
     }
 )
+
+function onMouseOver(element) {
+    element.style.color = 'lavender';
+    element.style.background = 'indigo';
+}
+
+function onMouseOut(element) {
+    element.style.color = 'indigo';
+    element.style.background = 'lavender';
+}

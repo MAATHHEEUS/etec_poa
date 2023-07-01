@@ -5,35 +5,83 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="../site_etec/CSS/styleforms.css">
     <title>Denuncias/Sugestões</title>
 </head>
 <body>
     <div id="caixa1">
-        <div class="container-fluid">
-            <div class="caixa_inf">
-                <div class="titulo">
-                    <h1>DENÚNCIAS/SUGESTÕES</h1>
-                </div>
-                
-                <div class="conteudo">
-                    <p class="mt-2">Aqui você pode fazer denúncias ou sugestões para que nós da ETEC Poá possamos melhorar nosso acolhimento aos alunos. <span class="text-danger fs-6">(É totalmente anônimo, somente oque será escrito abaixo chegará a nós).</span> Obrigado!</p>
-                    
-                    <div class="caixa_cursos">
-                        <div class="m-2">
-                            <label class="form-label m-1" for="denuncia">Denúncia ou Sugestão</label>
-                            <textarea id="descricao" class="form-control form-control-sm m-1" maxlength="300" placeholder="máximo 300 caracteres"></textarea>
-                        </div>  
+         <div class="caixa_inf">
+             <div class="container-formbox">
+                <div class="boxconteudoform">
+                    <div class="formboxform">
+                        <h2 style="color: rgb(178, 0, 0);"> Sua Opinião é importante para nós!
+                        </h2>
+                        <p>Aqui você pode dar sugestões para que nós da ETEC Poá possamos melhorar nosso acolhimento aos alunos. <span>(É totalmente anônimo, somente oque será escrito abaixo chegará a nós).</span> Obrigado!</p>
+                        <h3>Opinião ou Sugestão</h3>
+                        <div class="inputboxform">
+                            <Textarea class="interessemsg" id="descricao" maxlength="300" placeholder="máximo 300 caracteres"></Textarea>
+                        </div>
+                        <div class="termspriv">
+                        <h4><a href="#" class="sem_linha" onclick="abrirDiv();" style="cursor: pointer;">Termo de Consentimento de Respeito</a></h4></h4>
+                        <p>Li e estou de acordo com as Políticas de Respeito<input class="form-check-input-sm m-1" type="checkbox" id="politicas"></p>
                     </div>
-                    
-                    <div class="d-grid gap-2">
-                        <input type="button" value="ENVIAR" id="btn_enviar" class="btn btn-primary m-1 p-1">
+                    <div class="inputboxform">
+                        <input type="submit" value="Enviar" id="btn_enviar">
                     </div>
-
-                    <p id="msg" class="lead text-danger"></p>
                 </div>
             </div>
         </div>
     </div>
+    <div id="caixa2" class="modal modal-lg">
+        <div class="modal-dialog">
+            <div class="caixa_inf modal-content">
+                <!-- Botão de Fechar [x] -->
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Termo de Respeito</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="caixa_cursos">
+                        <p>Termo de Consentimento, Respeito e Participação
+
+Ao enviar sua opinião, você está concordando com este termo e comprometendo-se a respeitá-lo integralmente. É importante ressaltar que todas as opiniões enviadas serão tratadas de forma anônima, garantindo sua privacidade. No entanto, caso seja identificado qualquer desrespeito a este termo, a instituição tomará as medidas necessárias para solucionar a situação.
+<br>
+<br>
+Este termo visa estabelecer um ambiente de respeito e cordialidade, onde todos os participantes possam expressar suas opiniões livremente, sem qualquer forma de preconceito ou discriminação. Nenhum tipo de comportamento preconceituoso será tolerado, incluindo, mas não se limitando a:
+
+Preconceito contra mulheres (machismo, misoginia ou sexismo).
+Preconceito social (classismo).
+Preconceito racial (racismo).
+Preconceito contra pessoas trans (transfobia).
+Preconceito contra homossexuais (homofobia).
+Preconceito contra judeus (antissemitismo).
+Preconceito religioso.
+Preconceito contra gordos (gordofobia).
+Preconceito contra deficientes físicos (capacitismo).
+Preconceito contra estrangeiros (xenofobia).
+<br>
+<br>
+Além disso, solicitamos que você mantenha um ambiente educado, evitando o uso de spam, palavras ofensivas, agressivas ou quaisquer falsas acusações. A troca de ideias deve ser construtiva e respeitosa, visando o enriquecimento do debate.
+<br>
+<br>
+Destacamos que a participação ativa dos alunos é fundamental para fortalecer os laços entre a instituição e os estudantes. Suas opiniões contribuem para a aproximação, aprimoramento e o desenvolvimento de ações que visem atender às suas necessidades e expectativas.
+<br>
+<br>
+Caso seja identificada qualquer violação deste termo, a instituição tomará as medidas necessárias para lidar com a situação, podendo incluir a exclusão do conteúdo, o bloqueio de acesso ou outras ações cabíveis.
+<br>
+<br>
+Agradecemos pela sua compreensão e por contribuir para a manutenção de um ambiente saudável, respeitoso e participativo. Sua participação é fundamental para o fortalecimento da comunidade, a promoção de valores éticos e a construção conjunta de um ambiente acadêmico positivo.</p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="fecharPoliticas();">FECHAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <script src="../site_etec/JS/denuncias.js"></script>
 </body>
 </html>

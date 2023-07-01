@@ -36,7 +36,9 @@
                 </div>
                 
                 <div class="modal-body">
-                    <div class="caixa_cursos">
+                    <input type="hidden" id="noticia_id">
+
+                    <div class="" id="divCadastro">
                         <div class="m-2">
                             <label class="form-label m-0" for="titulo">Título:</label>
                             <input class="form-control form-control-sm m-0" type="text" id="titulo">
@@ -48,12 +50,47 @@
                         </div>
 
                         <div class="m-2">
-                            <label class="form-label m-1" for="imagem">Imagem</label>
+                            <label class="form-label m-1" for="link">Link:</label>
+                            <input class="form-control form-control-sm m-0" type="text" id="link">
+                        </div>
+
+                        <div class="m-2">
+                            <label class="form-label m-1" for="interessado">Interessado:</label>
+                            <select class="form-select form-select-sm m-1" id="interessado">
+                                <option value="Aluno">Aluno</option>
+                                <option value="Geral">Geral</option>
+                            </select>
+                        </div>
+
+                        <div class="m-2">
+                            <label class="form-label m-1" for="imagem">Imagem:</label>
                             <input class="form-control form-control-sm m-1" type="file" id="imagem">
                         </div>
+
+                        <div class="d-grid gap-2">
+                            <input type="button" value="Salvar" id="btn_salvar" class="btn btn-danger m-1 p-1">
+                        </div>
                     </div>
-                    <div class="d-grid gap-2">
-                        <input type="button" value="Salvar" id="btn_salvar" class="btn btn-primary m-1 p-1">
+                    
+                    <div class="" id="divCriar">
+                        <div class="m-2">
+                            <label class="form-label m-0" for="titulo">Título:</label>
+                            <input class="form-control form-control-sm m-0" type="text" id="titulo_criar" readonly disabled>
+                        </div>
+
+                        <div class="m-2">
+                            <label class="form-label m-0" for="interessado">Interessado:</label>
+                            <input class="form-control form-control-sm m-0" type="text" id="interessado_criar" readonly disabled>
+                        </div>
+
+                        <div class="m-2">
+                            <label class="form-label m-1" for="corpo">Corpo:</label>
+                            <textarea class="form-control form-control-sm m-0" id="corpo" rows="30" maxlength="5000"></textarea> 
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <input type="button" value="Atualizar" onclick="atualizar();" class="btn btn-danger m-1 p-1">
+                        </div>
                     </div>
 
                     <p id="msg_cadastro" class="lead text-danger"></p>

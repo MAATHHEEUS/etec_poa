@@ -5,36 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../site_etec/CSS/styleforms.css">
     <title>Interesse</title>
-    <style>
-        form{
-            padding: 30px;
-            position: relative;
-            background-color: #d3f5bc;
-        }
-        .fieldset{
-            background-color: darkgray;
-            border: solid 1px #fff;
-            border-radius: 10px;
-        }
-        select, input[Type='text'], input [Type='password'], input[Type='email']{
-            left: 150px;
-            border-radius: 5px;
-        }
-        legend{
-            padding: 5px;
-            border: solid 1px #fff;
-            background-color: lightgray;
-            border-radius: 10px;
-        }
-        input [type="submit"]{
-            padding: 15px;
-            background-color: lightgray;
-            border: solid 1px #fff;
-            border-radius: 10px;
-            margin-left: 30px;
-        }
-    </style>
 </head>
 <body>
     <div id="caixa1" class="modal modal-lg">
@@ -125,70 +97,60 @@
     </div>
     
     <div id="caixa2">
-        <div class="container-fluid">
-            <div class="caixa_inf">
-                <h1>Inscrição de Interesse</h1>
-                <form action="" method="post">
-                
-                <div id="nome_curso">
-                    <h4>Curso: "CURSO X"</h4>
-                </div>
-
-                <div class="fieldset">
-                    <legend>Informações do Curso</legend>
-                    
-                    <label class="form-label m-1" for="periodo">Dias da Semana</label><br/>
-                    <select id="diassemana" class="m-1" style="width:99%;background: rgba(255, 255, 255);">
-                        <option value="Semana">Seg. a Sex.</option>
-                        <option value="Sabados">Sábados</option>
-                    </select>
-
-                    <br/>
-                    <label class="form-label m-1" for="periodo">Escolha o periodo que pretende cursar</label><br/>
-                    <select id="periodo" class="m-1" style="width:99%;background: rgba(255, 255, 255);">
-                        <option value="Manha">Manhã</option>
-                        <option value="Tarde">Tarde</option>
-                        <option value="Noite">Noite</option>
-                        <option value="Integral">Integral</option>
-                    </select>
-                </div>
-                
-                <br/>
-                <div class="fieldset">
-                    <legend> Dados Pessoais</legend>
-
-                    <label class="form-label m-1" for="nome">Nome</label><br/>
-                    <input size="141" type="text" id="nome" class="m-1" maxlength="60" required>
-
-                    <br/>
-                    <label class="form-label m-1" for="email">E-mail</label><br/>
-                    <input type="email" id="email" maxlength="53" class="m-1" size="141" required>
-
-                    <br/>
-                    <label class="form-label m-1" for="numero1">DDD/Celular</label>
-                    <div class="row g-1">
-                        <div class="col-sm">
-                            <input type="text" id="ddd1" class="form-control form-control-sm m-1" maxlength="2" minlength="2" placeholder="00" required> 
+        <div class="container-formbox">
+                <div class="boxconteudoform">
+                    <div class="formboxform">
+                        <h1>Inscrição de Interesse</h1>
+                        <div id="nome_curso">
+                            <h2>CURSO X</h2>
                         </div>
-                        <div class="col-sm-11">
-                            <input type="text" id="numero1" size="129" class="m-1" maxlength="9" minlength="8" placeholder="000000000" required>
-                        </div>                      
-                    </div>    
+                        <h3>Informações do Curso</h3>
+                        <h4>Dias da semana</h4>
+                        <select id="diassemana" class="selectopt">
+                            <option value="Semana">Seg. a Sex.</option>
+                            <option value="Sabados">Sábados</option>
+                        </select>
+                        <h4>Escolha o período que pretende cursar</h4>
+                        <select id="periodo" class="selectopt">
+                            <option value="Manha">Manhã</option>
+                            <option value="Tarde">Tarde</option>
+                            <option value="Noite">Noite</option>
+                            <option value="Integral">Integral</option>
+                        </select>
+                        <Form>
+                            <h3>Dados Pessoais</h3>
+                            <div class="inputboxform">
+                                <span>Nome Completo</span>
+                                <input size="141" type="text" placeholder="Digite seu nome completo" id="nome" required >
+                            </div>
+                            <div class="inputboxform">
+                                <span>Email</span>
+                                <input type="email" placeholder="digite seu e-mail" id="email" required>
+                            </div>
+                            <div class="inputboxnumb">
+                                <span>DDD/Celular</span>
+                                <input type="text" id="ddd1" maxlength="2" minlength="2" placeholder="00" required> 
+                                <input type="text" id="numero1" size="129" maxlength="10" minlength="8" placeholder="000000000" required>
+                            </div>    
+                            <h3>Escreva um pequeno texto sobre o seu interesse neste curso</h3> 
+                            <div class="inputboxform">
+                                <Textarea class="interessemsg" id="interesse" maxlength="100" placeholder="máximo 100 caracteres"></Textarea>
+                            </div>
+                            <div class="termspriv">
+                                <h4><a href="#" onclick="abrirDiv();">Termo de Consentimento de uso de Dados Pessoais(LGPD)</a></h4>
+                                Li e estou de acordo com as Políticas de Privacidade<input class="form-check-input-sm m-1" type="checkbox" id="politicas">
+                            </div>
+                            <div class="inputboxform">
+                                <input type="submit" value="Enviar" id="btn_enviar">
+                            </div>
+                            <div class="inputboxform">
+                                <input type="reset" value="Limpar">
+                            </div>
+                        </Form>
+                    </div>
                 </div>
-                
-                <h2>Escreva um pequeno texto sobre o interesse neste curso</h2>
-                <Textarea class="form-control form-control-sm m-1" id="interesse" maxlength="100" placeholder="máximo 100 caracteres"></Textarea>
-
-                <h4><a href="#" class="sem_linha" onclick="abrirDiv();">Termo de Consentimento de uso de Dados Pessoais(LGPD)</a></h4>
-                <strong>Li e estou de acordo com as Políticas de Privacidade</strong><input class="form-check-input-sm m-1" type="checkbox" id="politicas">
-                
-                <div class="d-grid gap-2">
-                    <input type="button" class="btn btn-primary m-1 p-1" value="ENVIAR" id="btn_enviar">
-                    <input type="reset" class="btn btn-light m-1 p-1" value="LIMPAR">
-                </div>
-
-                <p id="msg" class="lead text-danger"></p>
             </div>
+       
         </div>
     </div>
     <script src="../site_etec/JS/registreSeuInteresse.js"></script>

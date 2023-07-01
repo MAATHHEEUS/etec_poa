@@ -23,7 +23,7 @@ switch ($acao) {
         if (!$resultset){
             echo json_encode(array(
                 'tipo' => 'E',
-                'msg' => "Erro ao consultar os usuarios. Contate o supoerte com um print deste erro!".$qry
+                'msg' => "Erro ao consultar os usuários. Contate o suporte com um print deste erro!".$qry
             ));
             return;
             break;

@@ -14,15 +14,23 @@ $acao = mysqli_real_escape_string($conn, $_POST['acao']);
 # Executa a ação solicitada pelo sistema    
 switch ($acao) {
     case 'carregaNoticias':
-        # Busca as oportunidades
-        $qry = "select * from tb_noticias order by dtcad desc limit " . getQuantidadeNoticias();
+        $tipo_usuario = mysqli_real_escape_string($conn, $_POST['tipo_usuario']);
+
+        $interessado = 'Geral';
+        if($tipo_usuario == 'aluno'){
+            $interessado = 'Aluno';
+        }
+
+        # Busca as notícias
+        $qry = "select * from tb_noticias where interessado = '$interessado' order by dtcad desc limit " . getQuantidadeNoticias();
         $resultset = mysqli_query($conn, $qry);
 
         # Verifica se deu certo a consulta
         if (!$resultset){
             echo json_encode(array(
                 'tipo' => 'E',
-                'msg' => "Erro ao consultar as notícias. " . mysqli_error($conn)
+                'msg' => "Erro ao consultar as notícias. #Contate o suporte com print dessa mensagem!",
+                'debug' => $qry
             ));
             return;
             break;
@@ -38,8 +46,19 @@ switch ($acao) {
                 $dtformat = converteData('padrao', $row['dtcad']);
                 
                 # Monta as noticias
-                $noticias .= "<h2>" . $row['titulo'] . " - (" . $dtformat . ")</h2>";
-                $noticias .= '<div clas="p-3 mb-2 bg-dark text-white noticia"><img class="img-thumbnail img-fluid" width="300px" height="300px" src="../../imagens/' . $row['nome_arq'] . '" alt="' . $row['nome_arq'] . '"><p class="font-monospace lh-base">' . $row['descricao'] . '</p></div><br>';
+                $noticias .= '
+<div class="w3-content w3-display-container">
+    <div class="carousel slide mySlides">
+        <img class="d-block w-100"  src="../../imagens_noticias/' . $row['nome_arq'] . '"  alt="' . $row['nome_arq'] . '">
+        <div class="carousel-caption d-none d-md-block noticia">
+            <h2 class="titleslider">' . $row['titulo'] . ' - (' . $dtformat . ')</h2>
+            <p class="textslider">' . $row['descricao'] . '</p>
+            <a href="' . $row['link'] . '" target="_blank" class="btn btn-dark" style="background: #273336;" onmouseover="this.style.backgroundColor=\'#7C0D00\'" onmouseout="this.style.backgroundColor=\'#273336\'">ACESSAR NOTÍCIA</a>
+        </div>
+    </div>
+</div>
+';
+
                 $contador++;
             }
         }

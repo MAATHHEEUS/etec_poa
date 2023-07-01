@@ -5,7 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../site_etec/CSS/styleforms.css">
     <title>Inscrição</title>
+       <style>
+.footer-etec
+{
+    margin-top: 85vh;
+}
+    </style>
 </head>
 <body>
     <div id="caixa1" class="modal modal-lg">
@@ -96,7 +103,102 @@
     </div>
 
     <div id="caixa2" hidden>
-        <div class="container-fluid">
+        <div class="caixa_inf">
+<div class="container-formbox">
+    <div class="boxconteudoform">
+        <div class="formboxform">
+            <h1>Inscrição</h1>
+            <div id="nome_curso">
+            <h2>Digite seus dados para podermos cadastrar seu interesse</h2>
+            </div>
+            <div class="caixa_cursos">
+            <Form>
+                <h3>Dados Pessoais</h3>
+                <div class="inputboxform">
+                    <span>CPF</span>
+                    <input type="text" id="cpf_cad" maxlength="11" required placeholder="Apenas os números">
+                </div>
+                <div class="inputboxform">
+                    <span>Nome</span>
+                    <input type="text" id="nome" maxlength="60" required placeholder="Seu nome completo"> 
+                </div>
+                    <div class="inputboxform">
+                        <span>Nome da Mãe</span>
+                        <input type="text" id="mae"  maxlength="60" required placeholder="Nome completo de sua Mãe">
+                    </div>    
+                    <div class="inputboxform">
+                        <span>RG/RNE</span>
+                        <input type="text" id="rg" maxlength="9" required placeholder="Apenas os números">
+                    </div>   
+                    <div class="inputboxform">
+                        <span>Órgão Expedidor</span>
+                        <input type="text" id="orgao" required maxlength="9" placeholder="ex: SSP">
+                    </div>
+                    <div class="inputboxform">
+                        <span>Estado</span>
+                        <input type="text" id="uf" required maxlength="2" placeholder="ex: SP">
+                    </div> 
+                    <div class="inputboxform">
+                        <span>Data de Expedição</span>
+                        <input type="date" id="dt_expedi" required>
+                    </div> 
+                    <div class="inputboxform">
+                        <span>Data de Nascimento</span>
+                        <input type="date" id="dt_nasc" required placeholder="dd/mm/aa">
+                    </div>   
+                    <h3>Dados do Responsável(obrigatório caso seja menor de idade)</h3>
+                    <div class="inputboxform">
+                        <span>CPF do Responsável</span>
+                        <input type="text" id="cpf_resp" maxlength="11" placeholder="Apenas os números">
+                    </div>
+                    <div class="inputboxform">
+                        <span>Nome do Responsável</span>
+                        <input type="text" id="nome_resp" maxlength="60" placeholder="Nome completo de sua mãe">
+                    </div>
+
+                    <div id="nome_curso">
+                            <h4>Curso: "CURSO X"</h4>
+                        </div>
+                        
+                    <div class="inputboxform">
+                        <span>Unidade</span>
+                        <input type="text" id="unidade" maxlength="60" readonly disabled value="ETEC de Poá">
+                    </div>
+                    <div class="inputboxform">
+                        <span>Período</span>
+                    <select id="periodo" class="selectopt"readonly disabled >
+                        <option value="Manha">Manhã</option>
+                        <option value="Tarde">Tarde</option>
+                        <option value="Noite">Noite</option>
+                        <option value="Integral">Integral</option>
+                    </select>
+                    </div>
+                    <div class="inputboxform">
+                        <span>Dias da Semana</span>
+                        <select id="diassemana" readonly disabled class="selectopt">
+                            <option value="1">Seg. a Sex.</option>
+                            <option value="2">Sábados</option>
+                        </select>
+                    </div>
+
+                    <div class="termspriv">
+                    <h4><a href="#" onclick="abrirDiv();">Termo de Consentimento de uso de Dados Pessoais(LGPD)</a></h4>
+                    Li e estou de acordo com as Políticas de Privacidade<input class="form-check-input-sm m-1" type="checkbox" id="politicas">
+                    </div>
+                <div class="inputboxform">
+                    <input type="submit" value="Entrar" id="btn_enviar">
+                </div>
+                <div class="inputboxform">
+                    <input type="reset" value="Limpar">
+                </div>
+                <p id="msg_form" class="lead text-danger"></p>
+            </Form>
+            </div>
+        </div>
+    </div>
+</div>
+
+       <!-- <div class="container-fluid">
             <div class="caixa_inf">
                 <div class="titulo">
                     <h1>INSCRIÇÃO</h1>
@@ -198,11 +300,34 @@
 
                     <p id="msg_form" class="lead text-danger"></p>
                 </div>
+                </div>
+            </div> -->
+        </div> 
+    </div> 
+
+    <div id="caixa3">
+        <div class="caixa_inf">
+            <div class="container-formbox">
+    <div class="boxconteudoform">
+        <div class="formboxform">
+            <h1>Inscrição</h1>
+            <div class="caixa_cursos">
+                <h3>Digite seu CPF ou CPF do responsável.</h3>
+            <Form>       
+                <div class="inputboxform">
+                    <span>CPF</span>
+                    <input type="text" id="cpf" maxlength="11" required placeholder="Apenas os números">
+                </div>
+                <div class="inputboxform">
+                    <input type="submit" value="Próximo" id="btn_cpf">
+                </div>
+                <p id="msg_cpf" class="lead text-danger"></p>
+            </Form>
             </div>
         </div>
     </div>
-
-    <div id="caixa3">
+</div>
+    <!-- <div id="caixa3">
         <div class="container-fluid">
             <div class="caixa_inf">
                 <div class="titulo">
@@ -226,9 +351,9 @@
 
                     <p id="msg_cpf" class="lead text-danger"></p>
                 </div>
-            </div>
+            </div> -->
         </div>
-    </div>
+    </div> 
     <script src="../site_etec/JS/formInscricao.js"></script>
 </body>
 </html>

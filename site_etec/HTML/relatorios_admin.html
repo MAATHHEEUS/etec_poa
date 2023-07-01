@@ -5,10 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="../site_etec/CSS/styleforms.css">
     <title>Declarações</title>
+
 </head>
 <body>
     <div id="caixa1">
+        <div class="caixa_inf">
+            <div class="container-formbox">
+    <div class="boxconteudoform">
+        <div class="formboxform">
+            <h1>Período</h1>
+            <div class="caixa_cursos" id="noticias">
+            <h3>Relação de Denuncias e Sugestões</h3>
+            <select class="selectopt" name="periodo" id="periodo">
+                <option value="semana">1 semana</option>
+                <option value="mes">1 mês</option>
+                <option value="meses">3 meses</option>
+                <option value="ano">1 ano</option>
+            </select>
+            <p><a onclick="print('rel_denuncias&sugestoes');"  style="cursor: pointer;">rel_denuncias&sugestoes.pdf</a></p>
+
+            <h3>Relação de Inscrições por curso</h3>
+            <select class="selectopt" name="cursos_rel_admin" id="cursos_rel_admin">
+                
+            </select>
+                        <p><a onclick="print('rel_inscricoes');" style="cursor: pointer;">rel_inscricoes.pdf</a></p>
+
+                        <h3>Relação de Registros de Interesse</h3>
+                        <p><a onclick="print('rel_interesses');"  style="cursor: pointer;">rel_interesses.pdf</a></p>
+        </div>
+            </div>
+    </div>
+</div>
+        </div>
+    </div>
+    <!--<div id="caixa1">
         <div class="container-fluid">
             <div class="caixa_inf">
                 <div class="titulo">
@@ -38,7 +70,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <script src="../site_etec/JS/relatorios_admin.js"></script>
 </body>
 </html>

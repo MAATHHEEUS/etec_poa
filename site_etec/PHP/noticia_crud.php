@@ -23,7 +23,8 @@ switch ($acao) {
         if (!$resultset){
             echo json_encode(array(
                 'tipo' => 'E',
-                'msg' => "Erro ao consultar as notícias. Contate o suporte com um print deste erro!".$qry
+                'msg' => "Erro ao consultar as notícias. Contate o suporte com um print deste erro!",
+                'debug' => $qry
             ));
             return;
             break;
@@ -36,6 +37,8 @@ switch ($acao) {
                     <th>Título</th>
                     <th>Data Cadastro</th>
                     <th>Descrição</th>
+                    <th>Interessado</th>
+                    <th>Link</th>
                     <th>Ações</th>
                 </tr></thead><tbody>";
         # Verifica se retornou linhas
@@ -47,14 +50,22 @@ switch ($acao) {
                 # Monta a tabela 
                 $class = "";
                 if($contador < getQuantidadeNoticias()){
-                    $class = "table-active";
+                    $class = "";
                 }
                 $grid .= "<tr  class=".$class.">
                             <td>".$row['titulo']."</td>
                             <td>".$dtformat."</td>
                             <td>".substr($row['descricao'], 0, 50)."...</td>
-                            <td><input type='button' class=\"btn btn-danger m-1 btn-sm p-1\" value='DELETAR' onclick='Deletar(".$row["noticia_id"].")';></input></td>
-                        </tr>";
+                            <td>".$row['interessado']."</td>";
+                            $grid .= "<td><a href='".$row['link']."' target='_blank'>".$row['link']."</a></td>";
+
+                            if($row['link'] != ''){
+                                $grid .= "<td><input type='button' class=\"btn btn-danger m-1 btn-sm p-1\" value='DELETAR' onclick='Deletar(".$row["noticia_id"].")';></input></td>";
+                            }else{
+                                $grid .= "<td><input type='button' class=\"btn btn-success m-1 btn-sm p-1\" value='CRIAR' onclick='criarNoticia(".$row["noticia_id"].")';></input><input type='button' class=\"btn btn-danger m-1 btn-sm p-1\" value='DELETAR' onclick='Deletar(".$row["noticia_id"].")';></input></td>";
+                            }
+                            
+                        $grid .= "</tr>";
                 $contador++;
             }
             $grid .= "</tbody>";
@@ -87,9 +98,11 @@ switch ($acao) {
         if (!$resultset){
             echo json_encode(array(
                 'tipo' => 'E',
-                'msg' => "Erro ao editar o registro. " . $qry
+                'msg' => "Erro ao editar o registro.",
+                'debug' => $qry
             ));
             return;
+            break;
         }
 
         $row = mysqli_fetch_assoc($resultset);
@@ -99,12 +112,13 @@ switch ($acao) {
 
         # delete o arquivo da pasta imagens se existir
         if ($nome_arq != null) {
-            if(!unlink("../../imagens/". $nome_arq)){
+            if(!unlink("../../imagens_noticias/". $nome_arq)){
                 echo json_encode(array(
                     'tipo' => 'E',
                     'msg' => "Erro ao excluir a imagem."
                 ));
                 return;
+                break;
             }
         }
 
@@ -116,10 +130,12 @@ switch ($acao) {
         if (!$resultset){
             echo json_encode(array(
                 'tipo' => 'E',
-                'msg' => "Erro ao deletar Notícia porém imagem já excluída. Contate o suporte com print deste erro!" . $qry
+                'msg' => "Erro ao deletar Notícia porém imagem já excluída. Contate o suporte com print deste erro!",
+                'debug' => $qry
             ));
             return;
             break;
+            
         }
 
         echo json_encode(array(
@@ -141,18 +157,31 @@ switch ($acao) {
         $conteudo = addslashes($conteudo);
         fclose($fp);
 
+        $arquivo_path = "../../imagens_noticias/". $nome_arq . "";
+        
+        # Verificar se existe arquivo com mesmo nome na pasta
+        if(file_exists($arquivo_path)){
+            echo json_encode(array(
+                'tipo' => 'E',
+                'msg' => "ARQUIVO JÁ EXISTE NO SERVIDOR. TROQUE O NOME DO ARQUIVO!"
+            ));
+            return;
+            break;
+        }
+
         # Move o arquivo para a pasta de imagens
-        $arquivo_path = "../../imagens/". $nome_arq . "";
         move_uploaded_file($imagem, $arquivo_path);
        
         $titulo = mysqli_real_escape_string($conn, $_POST['titulo']);
         $descricao = mysqli_real_escape_string($conn, $_POST['descricao']);
+        $link = mysqli_real_escape_string($conn, $_POST['link']);
+        $interessado = mysqli_real_escape_string($conn, $_POST['interessado']);
         $today = getdate();
         $dtcad = $today['year']."/".$today['mon']."/".$today['mday'];
 
         # Salva
        
-        $qry = "INSERT INTO `tb_noticias`(`titulo`, `dtcad`, `descricao`, `nome_arq`) VALUES ('".$titulo."', '".$dtcad."', '".$descricao."', '".$nome_arq."')";
+        $qry = "INSERT INTO `tb_noticias`(`titulo`, `dtcad`, `descricao`, `nome_arq`, `link`, `interessado`) VALUES ('".$titulo."', '".$dtcad."', '".$descricao."', '".$nome_arq."', '".$link."', '".$interessado."')";
         $msg = 'Notícia cadastrada.';
         
         $resultset = mysqli_query($conn, $qry);
@@ -161,7 +190,8 @@ switch ($acao) {
         if (!$resultset){
             echo json_encode(array(
                 'tipo' => 'E',
-                'msg' => "Erro ao salvar notícia. Contate o suporte com print deste erro!" . $qry
+                'msg' => "Erro ao salvar notícia. Contate o suporte com print deste erro!",
+                'debug' => $qry
             ));
             return;
             break;
@@ -172,5 +202,67 @@ switch ($acao) {
             'msg' => $msg
         ));
         return;            
+        break;
+
+    case "atualizar":
+        $noticia = mysqli_real_escape_string($conn, $_POST['noticia']);
+        $corpo = mysqli_real_escape_string($conn, $_POST['corpo']);
+        $link = '../site_etec/PHP/noticia_criada.php?id='.$noticia;
+
+        $qry = "UPDATE `tb_noticias` SET `link`= '$link', `corpo`= '$corpo' WHERE `noticia_id` = '$noticia'";
+        $msg = 'Notícia atualizada.';
+        
+        $resultset = mysqli_query($conn, $qry);
+
+        # Verifica se deu certo
+        if (!$resultset){
+            echo json_encode(array(
+                'tipo' => 'E',
+                'msg' => "Erro ao atualizar a notícia. Contate o suporte com print deste erro!",
+                'debug' => $qry
+            ));
+            return;
+            break;
+        }
+
+        echo json_encode(array(
+            'tipo' => 'OK',
+            'msg' => $msg
+        ));
+        return;            
+        break;
+
+    case "editar":
+        $noticia = mysqli_real_escape_string($conn, $_POST['noticia']);
+
+        # Busca o registro pelo id
+        $qry = "SELECT * FROM `tb_noticias` WHERE noticia_id = '$noticia'";
+        $resultset = mysqli_query($conn, $qry);
+
+        # Verifica se deu certo a consulta
+        if (!$resultset){
+            echo json_encode(array(
+                'tipo' => 'E',
+                'msg' => "Erro ao editar o registro.",
+                'debug' => $qry
+            ));
+            return;
+            break;
+        }
+
+        $row = mysqli_fetch_assoc($resultset);
+
+        $dtFormat = converteData('padrao', $row['dtcad']);
+        echo json_encode(array(
+            'tipo' => 'OK',
+            'id' => $row['noticia_id'],
+            'titulo' => $row['titulo'],
+            'descricao' => $row['descricao'],
+            'arquivo' => $row['nome_arq'],
+            'link' => $row['link'],
+            'interessado' => $row['interessado'],
+            'data' => $dtFormat,
+        ));
+        return;
         break;
 }

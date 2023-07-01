@@ -46,6 +46,62 @@ function Buscar(){
     return
 }
 
+function criarNoticia(id){
+    let dados = new FormData()
+    dados.append('acao', 'editar')
+    dados.append('noticia', id)
+    $.ajax({
+    url: '../site_etec/PHP/noticia_crud.php',
+    method: 'post',
+    data: dados,
+    processData: false,
+    contentType: false,
+    dataType: 'json'
+    }).done(function(resposta){
+        if(resposta.tipo === 'E'){
+            alert(resposta.msg)
+        }
+        $('#msg').text(resposta.msg)
+        if(resposta.tipo === 'OK'){
+            $('#titulo_criar').val(resposta.titulo)
+            $('#interessado_criar').val(resposta.interessado)
+            $('#corpo').val('')
+            $('#noticia_id').val(resposta.id)
+            $('#staticBackdropLabel').html('Criar notícia')
+            $('#divCadastro').attr('hidden', 'hidden')
+            $('#divCriar').removeAttr('hidden')
+            modal.style.display = "block";
+        }
+    } )
+    return
+}
+
+function atualizar(){
+    let dados = new FormData()
+    dados.append('acao', 'atualizar')
+    dados.append('noticia', $('#noticia_id').val())
+    dados.append('corpo', $('#corpo').val())
+    $.ajax({
+    url: '../site_etec/PHP/noticia_crud.php',
+    method: 'post',
+    data: dados,
+    processData: false,
+    contentType: false,
+    dataType: 'json'
+    }).done(function(resposta){
+        if(resposta.tipo === 'E'){
+            alert(resposta.msg)
+        }
+        $('#msg').text(resposta.msg)
+        if(resposta.tipo === 'OK'){
+            Buscar()
+            modal.style.display = "none";
+            alert(resposta.msg)
+        }
+    } )
+    return
+}
+
 function Deletar(id){
     let aux = confirm("Confirma a exclusão da notícia?");
     if(!aux){
@@ -80,7 +136,11 @@ $('#btn_abrir_cadastro').click(
         $('#noticia_id').val('')
         $('#titulo').val('')
         $('#descricao').val('')
+        $('#link').val('')
         $('#imagem').val('')
+        $('#staticBackdropLabel').html('Cadastro de notícia')
+        $('#divCriar').attr('hidden', 'hidden')
+        $('#divCadastro').removeAttr('hidden')
         modal.style.display = "block";
         return
     }
@@ -95,13 +155,15 @@ $('#btn_salvar').click(
         }
 
         if($('#titulo').val() === '' || $('#descricao').val() === '' || $('input#imagem')[0].files[0] === null){
-            alert('Preencha todos os campos e carregue uma imagem!');
+            alert('Preencha os campos obrigatórios e carregue uma imagem!');
             return;
         }
         let dados = new FormData()
         dados.append('acao', 'salvar')
         dados.append('titulo', $('#titulo').val())
         dados.append('descricao', $('#descricao').val())
+        dados.append('link', $('#link').val())
+        dados.append('interessado', $('#interessado').val())
         dados.append('imagem', $('input#imagem')[0].files[0])
         $.ajax({
         url: '../site_etec/PHP/noticia_crud.php',
