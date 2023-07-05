@@ -1,0 +1,26 @@
+#
+Nome:   Santos
+Abreviação:  SAN
+Fundação:   18/09/1980
+Cor primária:   Branco
+Cor secundária:   Cinza
+Observações:   Pelé
+#
+Nome: Curintia
+Abreviação:COR
+Fundação: 10/03/1910
+Cor primária: Preto
+Cor secundária: Branco
+Observações: Não tem dinheiro
+
+
+#
+Nome: Palmeiras
+Abreviação:SEP
+Fundação: 14/09/1914
+Cor primária: Verdão
+Cor secundária: Branco
+Observações: Primeiro campeão Mundial
+Maior Campeão Nacional
+Pai de Todos
+

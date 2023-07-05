@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 1 - Campos</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col mt-5">
+                <!--Abas-->
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" id="btn_para_cadastro" class="btn btn-secondary">Cadastar</button>
+                    <button type="button" id="btn_para_consulta" class="btn btn-secondary">Consultar</button>
+                </div>
+
+                <div class="titulo">
+                    <h1 id="titulo">CADASTRO DE CAMPOS</h1>
+                </div>
+                <!--Form de cadastro (Principal)-->
+                <div class="form" id="cadastro">
+                    <input type="hidden" id="id_campo_cadastro">
+
+                    <div class="mb-3">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome_cadastro" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="endereco">Endereço: </label>
+                        <input type="text" id="endereco_cadastro" maxlength="60" size="65" placeholder="Rua x, Bairro - Cidade/ESTADO" class="form-control">
+                    </div>
+
+                    <input type="button" value="salvar" id="btn_cadastro" class="btn btn-primary">
+                </div>
+                <!--Form de Consulta-->
+                <div class="form" id="consulta" hidden>
+                    <input type="hidden" id="id_campo_consulta">
+
+                    <div class="mb-3">
+                        <label for="nome">Escolha o codigo de um registro: </label>
+                        <input type="text" id="codigo" class="form-control">
+                    </div>
+
+                    <input type="button" value="consultar" id="btn_consulta" class="btn btn-primary" onclick="consultar();">
+
+                    <br>
+                    <div id="grid" hidden></div>
+
+                    <div id="editar" hidden>
+                        <br><div class="mb-3">
+                            <label for="nome">Nome:</label>
+                            <input type="text" id="nome_consulta" class="form-control">
+                        </div>
+    
+                        <div class="mb-3">
+                            <label for="endereco">Endereço: </label>
+                            <input type="text" class="form-control" id="endereco_consulta" maxlength="60" size="65">
+                        </div>
+                        <input type="button" value="salvar" id="btn_salvar" hidden class="btn btn-primary">
+                        <input type="button" value="deletar" id="btn_deletar" hidden class="btn btn-primary">
+                    </div>
+                </div>
+
+                <div class="msg" id='msg'></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="main-campo.js"></script>
+</body>
+</html>
